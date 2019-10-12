@@ -76,6 +76,9 @@
                 <version>${maven-surefire-plugin-version}</version>
                 <configuration>
                     <systemProperties>
+                        <argLine>
+                            --illegal-access=permit
+                        </argLine>
                         <!-- Only log errors and only log to the console to decrease the log verbosity -->
                         <soapui.log4j.config>${project.build.testOutputDirectory}/config/soapui-test-log4j.xml
                         </soapui.log4j.config>

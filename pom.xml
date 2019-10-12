@@ -60,12 +60,12 @@
         <exec-maven-plugin-version>1.6.0</exec-maven-plugin-version>
         <xmlbeans-maven-plugin-version>2.3.4</xmlbeans-maven-plugin-version>
         <!-- org.openjfx-->
-        <javafx-base-version>12</javafx-base-version>
-        <javafx-controls-version>12</javafx-controls-version>
-        <javafx-graphics-version>12</javafx-graphics-version>
-        <javafx-media-version>12</javafx-media-version>
-        <javafx-web-version>12</javafx-web-version>
-        <javafx-swing-version>12</javafx-swing-version>
+        <javafx-base-version>13</javafx-base-version>
+        <javafx-controls-version>13</javafx-controls-version>
+        <javafx-graphics-version>13</javafx-graphics-version>
+        <javafx-media-version>13</javafx-media-version>
+        <javafx-web-version>13</javafx-web-version>
+        <javafx-swing-version>13</javafx-swing-version>
         <!-- other -->
         <maven-gitlog-plugin-version>1.9.1</maven-gitlog-plugin-version>
 
@@ -81,6 +81,18 @@
 
     <build>
         <plugins>
+            <!-- mvn versions:display-plugin-updates -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+
+
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -110,8 +122,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin-version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.9</target>
+                    <release>13</release>
                 </configuration>
             </plugin>
             <plugin>
