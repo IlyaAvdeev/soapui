@@ -238,114 +238,114 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
-            <version>${javafx-base-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
-            <version>${javafx-base-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
-            <version>${javafx-base-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx-controls-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx-controls-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx-controls-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>${javafx-graphics-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>${javafx-graphics-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>${javafx-graphics-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>${javafx-media-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>${javafx-media-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>${javafx-media-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
-            <version>${javafx-web-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
-            <version>${javafx-web-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
-            <version>${javafx-web-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
-            <version>${javafx-swing-version}</version>
+            <version>${targetJdk}</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
-            <version>${javafx-swing-version}</version>
+            <version>${targetJdk}</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
-            <version>${javafx-swing-version}</version>
+            <version>${targetJdk}</version>
             <classifier>mac</classifier>
         </dependency>
 
