@@ -3,7 +3,6 @@ package com.eviware.soapui.ui.starterpage;
 import com.eviware.soapui.impl.WorkspaceImpl;
 import com.eviware.soapui.impl.actions.NewRestProjectAction;
 import com.eviware.soapui.impl.actions.NewWsdlProjectAction;
-import com.eviware.soapui.impl.rest.actions.explorer.EndpointExplorerAction;
 import com.eviware.soapui.model.workspace.Workspace;
 
 import javax.swing.SwingUtilities;
@@ -32,15 +31,6 @@ public class StarterPageButtonCallback {
             @Override
             public void run() {
                 new NewRestProjectAction().perform(workspace, null);
-            }
-        });
-    }
-
-    public void launchEndpointExplorer() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new EndpointExplorerAction().actionPerformed(null);
             }
         });
     }

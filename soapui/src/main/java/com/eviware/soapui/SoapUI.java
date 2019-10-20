@@ -25,13 +25,11 @@ import com.eviware.soapui.actions.SwitchDesktopPanelAction;
 import com.eviware.soapui.actions.VersionUpdateAction;
 import com.eviware.soapui.autoupdate.SoapUIAutoUpdaterUtils;
 import com.eviware.soapui.autoupdate.SoapUIUpdateProvider;
-import com.eviware.soapui.impl.RoundButton;
 import com.eviware.soapui.impl.WorkspaceImpl;
 import com.eviware.soapui.impl.actions.ImportWsdlProjectAction;
 import com.eviware.soapui.impl.actions.NewEmptyProjectAction;
 import com.eviware.soapui.impl.actions.NewRestProjectAction;
 import com.eviware.soapui.impl.actions.NewWsdlProjectAction;
-import com.eviware.soapui.impl.rest.actions.explorer.EndpointExplorerAction;
 import com.eviware.soapui.impl.rest.actions.project.NewRestServiceAction;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
@@ -168,8 +166,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -188,14 +184,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.prefs.BackingStoreException;
 
 import static com.eviware.soapui.impl.support.HttpUtils.urlEncodeWithUtf8;
-import static com.eviware.soapui.settings.UISettings.SHOW_ENDPOINT_EXPLORER_ON_START;
 import static com.eviware.soapui.settings.UISettings.SHOW_STAY_TUNED_DIALOG;
 
 /**
  * Main SoapUI entry point.
  */
 public class SoapUI {
-    // ------------------------------ CONSTANTS ------------------------------
     public static final String DEFAULT_DESKTOP = "Default";
     public static final String CURRENT_SOAPUI_WORKSPACE = SoapUI.class.getName() + "@workspace";
     public final static Logger log = Logger.getLogger(SoapUI.class);
@@ -229,7 +223,6 @@ public class SoapUI {
     public static final String TEST_SUITE_ACTIONS = "WsdlTestSuiteActions";
     public static final String TEST_CASE_ACTIONS = "WsdlTestCaseActions";
     public static final String TEST_STEP_ACTIONS = "WsdlTestStepActions";
-    // ------------------------------ FIELDS ------------------------------
 
     private static List<Object> logCache = new ArrayList<Object>();
     private static SoapUICore soapUICore;
@@ -265,9 +258,6 @@ public class SoapUI {
     private static String[] mainArgs;
     private static GCTimerTask gcTimerTask;
 
-    private static JPanel endpointExplorerButtonPanel;
-    private static JButton endpointExplorerButton;
-
     private final static ThreadPoolExecutor threadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(
             getMaxThreadpoolSize(), new SoapUIThreadCreator());
     private JTextField searchField;
@@ -285,8 +275,6 @@ public class SoapUI {
             System.setProperty(BROWSER_DISABLED_SYSTEM_PROPERTY, Boolean.TRUE.toString());
         }
     }
-
-    // --------------------------- CONSTRUCTORS ---------------------------
 
     private SoapUI() {
     }
@@ -383,13 +371,6 @@ public class SoapUI {
         applyProxyButton = (JToggleButton) mainToolbar.add(new JToggleButton(new ApplyProxyButtonAction()));
         updateProxyButtonAndTooltip();
         mainToolbar.addSpace(15);
-        createToolbarSeparator();
-        mainToolbar.addSpace(10);
-        createEndpointExplorerButton();
-        endpointExplorerButtonPanel.add(endpointExplorerButton);
-        mainToolbar.add(endpointExplorerButtonPanel);
-        mainToolbar.addSpace(10);
-        createToolbarSeparator();
 
         mainToolbar.addGlue();
         searchField = new JTextField(20) {
@@ -444,44 +425,6 @@ public class SoapUI {
         } else {
             Tools.openURL(HelpUrls.COMMUNITY_SEARCH_URL);
         }
-    }
-
-    private void createEndpointExplorerButton() {
-        endpointExplorerButtonPanel = new JPanel(new BorderLayout());
-        endpointExplorerButtonPanel.setPreferredSize(new Dimension(130, 32));
-        endpointExplorerButtonPanel.setMaximumSize(new Dimension(130, 32));
-        endpointExplorerButton = new RoundButton(6);
-        endpointExplorerButton.setForeground(Color.WHITE);
-        endpointExplorerButton.setBackground(new Color(52, 137, 209));
-        endpointExplorerButton.setText("Endpoint Explorer");
-        if (UISupport.isMac()) {
-            endpointExplorerButton.setOpaque(false);
-        }
-        EndpointExplorerAction action = new EndpointExplorerAction();
-        endpointExplorerButton.addActionListener(action);
-        endpointExplorerButton.addMouseListener(new MouseListener() {
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                endpointExplorerButton.setBackground(new Color(39, 104, 158));
-                endpointExplorerButton.repaint();
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                endpointExplorerButton.setBackground(new Color(52, 137, 209));
-                endpointExplorerButton.repaint();
-            }
-
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            public void mousePressed(MouseEvent e) {
-            }
-
-            public void mouseReleased(MouseEvent e) {
-            }
-        });
     }
 
     private void createToolbarSeparator() {
@@ -987,9 +930,6 @@ public class SoapUI {
                 SoapUI.getSettings().setBoolean(SHOW_STAY_TUNED_DIALOG, false);
                 workspace.setSupportInformationDialog(false);
             }
-            if (SoapUI.getSettings().getBoolean(SHOW_ENDPOINT_EXPLORER_ON_START, true)) {
-                showEndpointExplorer();
-            }
         }
         return soapUI;
     }
@@ -1379,10 +1319,6 @@ public class SoapUI {
 
         UISupport.showDesktopPanel(starterPageDesktopPanel);
         starterPageDesktopPanel.navigate(HelpUrls.STARTER_PAGE_URL, SoapUI.class.getResource(BACKUP_STARTER_PAGE_URL).toString(), true);
-    }
-
-    private static void showEndpointExplorer() {
-        new EndpointExplorerAction().actionPerformed(null);
     }
 
     private static class AboutAction extends AbstractAction {
