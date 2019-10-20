@@ -361,9 +361,6 @@ public class SoapUI {
         mainToolbar.add(new NewProjectActionDelegate("/new-rest-project-icon.png", "REST", NewRestProjectAction.SOAPUI_ACTION_ID));
         mainToolbar.add(new ImportWsdlProjectActionDelegate());
         mainToolbar.add(new SaveAllActionDelegate());
-        mainToolbar.addSpace(2);
-        mainToolbar.add(new ShowOnlineHelpAction("Trial", HelpUrls.TRIAL_URL, "Apply for SoapUI Pro Trial License",
-                "/Trial_20-20.png"));
         mainToolbar.add(new PreferencesActionDelegate());
         applyProxyButton = (JToggleButton) mainToolbar.add(new JToggleButton(new ApplyProxyButtonAction()));
         updateProxyButtonAndTooltip();
