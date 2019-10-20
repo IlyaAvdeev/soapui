@@ -1485,9 +1485,9 @@ public class SoapUI {
         public NewProjectActionDelegate(String icon, String name, String actionId) {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon(icon));
             if (name.equals("Empty")) {
-                putValue(Action.SHORT_DESCRIPTION, "Creates an empty project");
+                putValue(Action.SHORT_DESCRIPTION, "Create empty project");
             } else {
-                putValue(Action.SHORT_DESCRIPTION, "Creates a new " + name + " project");
+                putValue(Action.SHORT_DESCRIPTION, "Create new " + name + " project");
             }
             putValue(Action.NAME, name);
             this.actionId = actionId;
@@ -1509,8 +1509,8 @@ public class SoapUI {
     private static class ImportWsdlProjectActionDelegate extends AbstractAction {
         public ImportWsdlProjectActionDelegate() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/import_toolbar_icon.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Imports an existing SoapUI Project into the current workspace");
-            putValue(Action.NAME, "Import");
+            putValue(Action.SHORT_DESCRIPTION, "Open SoapUI Project");
+            putValue(Action.NAME, "Open");
         }
 
         public void actionPerformed(ActionEvent e) {
@@ -1533,7 +1533,7 @@ public class SoapUI {
     private class PreferencesActionDelegate extends AbstractAction {
         public PreferencesActionDelegate() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/preferences_toolbar_icon.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Sets Global SoapUI Preferences");
+            putValue(Action.SHORT_DESCRIPTION, "Configure Preferences");
             putValue(Action.NAME, "Preferences");
         }
 
