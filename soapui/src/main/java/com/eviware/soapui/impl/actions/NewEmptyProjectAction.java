@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.actions;
 
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.WorkspaceImpl;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.support.MessageSupport;
@@ -40,9 +38,6 @@ public class NewEmptyProjectAction extends AbstractSoapUIAction<WorkspaceImpl> {
         try {
             WsdlProject project = target.createProject(ModelItemNamer.createName("Project", target.getProjectList()), null);
             UISupport.selectAndShow(project);
-            if (param != null && param instanceof SoapUIActions) {
-                Analytics.trackAction((SoapUIActions) param);
-            }
         } catch (SoapUIException e) {
             UISupport.showErrorMessage(e);
         }

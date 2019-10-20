@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.panels.mock;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.rest.actions.mock.AddEmptyRestMockResourceAction;
 import com.eviware.soapui.impl.rest.actions.mock.RestMockServiceOptionsAction;
 import com.eviware.soapui.impl.rest.mock.RestMockService;
@@ -91,9 +89,6 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static com.eviware.soapui.analytics.SoapUIActions.STOP_REST_MOCK_FROM_MOCK_PANEL;
-import static com.eviware.soapui.analytics.SoapUIActions.STOP_SOAP_MOCK_FROM_MOCK_PANEL;
 
 /**
  * DesktopPanel for WsdlMockServices
@@ -546,13 +541,6 @@ public class WsdlMockServiceDesktopPanel<MockServiceType extends MockService>
         }
 
         public void actionPerformed(ActionEvent arg0) {
-
-            if (getModelItem() instanceof WsdlMockService) {
-                Analytics.trackAction(SoapUIActions.START_SOAP_MOCK_FROM_MOCK_PANEL);
-            } else if (getModelItem() instanceof RestMockService) {
-                Analytics.trackAction(SoapUIActions.START_REST_MOCK_FROM_MOCK_PANEL);
-            }
-
             startMockService();
         }
     }
@@ -591,13 +579,6 @@ public class WsdlMockServiceDesktopPanel<MockServiceType extends MockService>
         if (mockRunner != null) {
             try {
                 MockService mockService = mockRunner.getMockContext().getMockService();
-                if (mockService != null) {
-                    if (mockService instanceof WsdlMockService) {
-                        Analytics.trackAction(STOP_SOAP_MOCK_FROM_MOCK_PANEL);
-                    } else if (mockService instanceof RestMockService) {
-                        Analytics.trackAction(STOP_REST_MOCK_FROM_MOCK_PANEL);
-                    }
-                }
             } catch (Exception e) {
                 //ignore
             }

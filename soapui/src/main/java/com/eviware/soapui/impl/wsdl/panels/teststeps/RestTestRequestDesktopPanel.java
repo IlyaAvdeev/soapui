@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.panels.teststeps;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.rest.RestMethod;
 import com.eviware.soapui.impl.rest.RestResource;
 import com.eviware.soapui.impl.rest.panels.request.AbstractRestRequestDesktopPanel;
@@ -230,10 +228,6 @@ public class RestTestRequestDesktopPanel extends AbstractRestRequestDesktopPanel
     }
 
     protected Submit doSubmit() throws SubmitException {
-        Analytics.trackAction(SoapUIActions.RUN_TEST_STEP_FROM_PANEL, "StepType", "REST",
-                "HTTPMethod", getRequest().getMethod().name());
-        Analytics.trackAction(SoapUIActions.RUN_TEST_STEP, "HTTPMethod", getRequest().getMethod().name());
-
         return getRequest().submit(new WsdlTestRunContext(getModelItem()), true);
     }
 

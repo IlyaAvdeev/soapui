@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.actions.testcase;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase;
 import com.eviware.soapui.security.SecurityTest;
 import com.eviware.soapui.support.StringUtils;
@@ -51,10 +49,5 @@ public class AddNewSecurityTestAction extends AbstractSoapUIAction<WsdlTestCase>
 
         SecurityTest securityTest = testCase.addNewSecurityTest(name);
         UISupport.selectAndShow(securityTest);
-        if (param != null && param instanceof SoapUIActions) {
-            Analytics.trackAction((SoapUIActions) param);
-        } else {
-            Analytics.trackAction(SoapUIActions.CREATE_SECURITY_TEST);
-        }
     }
 }

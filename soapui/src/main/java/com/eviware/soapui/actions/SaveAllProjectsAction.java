@@ -17,16 +17,12 @@
 package com.eviware.soapui.actions;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.WorkspaceImpl;
 import com.eviware.soapui.model.project.Project;
 import com.eviware.soapui.model.project.SaveStatus;
 import com.eviware.soapui.model.workspace.Workspace;
 import com.eviware.soapui.model.workspace.WorkspaceListener;
 import com.eviware.soapui.support.action.support.AbstractSoapUIAction;
-
-import static com.eviware.soapui.analytics.SoapUIActions.SAVE_ALL_PROJECTS;
 
 /**
  * Action to save all projects
@@ -51,13 +47,6 @@ public class SaveAllProjectsAction extends AbstractSoapUIAction<WorkspaceImpl> i
 
     public void perform(WorkspaceImpl workspace, Object param) {
         SaveStatus status = workspace.save(false);
-        if (status == SaveStatus.SUCCESS) {
-            if (param != null && param instanceof SoapUIActions) {
-                Analytics.trackAction((SoapUIActions) param);
-            } else {
-                Analytics.trackAction(SAVE_ALL_PROJECTS);
-            }
-        }
     }
 
     public void projectAdded(Project project) {

@@ -7,6 +7,9 @@
 SoapUI is the world's leading testing tool for API testing. See the [SoapUI website](https://www.soapui.org/) to learn more.
 By downloading our software, you agree to our [license](https://www.soapui.org/developers-corner/soapui-license.html) and [privacy policy](https://smartbear.com/privacy/).
 
+## Differences from the basic repo
+* No in-product analytics (start page only left)
+
 ## Table of content
 
 * [Structure and submodules](#structure-and-submodules)

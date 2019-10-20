@@ -1609,10 +1609,9 @@
             <xsd:element name="element" type="xsd:QName"></xsd:element>
             <xsd:element name="description" type="xsd:string"></xsd:element>
         </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:string"></xsd:attribute>
-        <xsd:attribute name="type" type="tns:RestResourceRepresentationType"></xsd:attribute>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="type" type="tns:RestResourceRepresentationType"/>
     </xsd:complexType>
-
     <xsd:complexType name="WsaConfig">
         <xsd:attribute name="replyTo" type="xsd:string"></xsd:attribute>
         <xsd:attribute name="faultTo" type="xsd:string"></xsd:attribute>

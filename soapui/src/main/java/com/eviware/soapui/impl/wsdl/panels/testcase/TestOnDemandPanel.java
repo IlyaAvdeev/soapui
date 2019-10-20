@@ -18,8 +18,6 @@ package com.eviware.soapui.impl.wsdl.panels.testcase;
 
 import com.eviware.soapui.SoapUI;
 import com.eviware.soapui.SoapUISystemProperties;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.support.HelpUrls;
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase;
@@ -247,8 +245,6 @@ public class TestOnDemandPanel extends JPanel {
                 if (!Strings.isNullOrEmpty(redirectUrl)) {
                     openURLSafely(redirectUrl);
                 }
-
-                Analytics.trackAction(SoapUIActions.TEST_ON_DEMAND);
             }
         }
     }

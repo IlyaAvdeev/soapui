@@ -17,8 +17,6 @@
 package com.eviware.soapui.tools;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.AnalyticsHelper;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.impl.wsdl.loadtest.WsdlLoadTest;
 import com.eviware.soapui.impl.wsdl.loadtest.data.actions.ExportLoadTestLogAction;
@@ -46,8 +44,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.eviware.soapui.analytics.SoapUIActions.LAUNCH_LOAD_TEST_RUNNER;
-import static com.eviware.soapui.analytics.SoapUIActions.LAUNCH_LOAD_TEST_RUNNER_FROM_UI;
 import static com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ProcessToolRunner.STARTED_FROM_GUI;
 
 /**
@@ -236,15 +232,6 @@ public class SoapUILoadTestRunner extends AbstractSoapUITestRunner implements Lo
      */
 
     public boolean runRunner() throws Exception {
-        AnalyticsHelper.initializeAnalytics();
-        Analytics.trackSessionStart();
-
-        if (System.getenv(STARTED_FROM_GUI) == null) {
-            Analytics.trackAction(LAUNCH_LOAD_TEST_RUNNER);
-        } else {
-            Analytics.trackAction(LAUNCH_LOAD_TEST_RUNNER_FROM_UI);
-        }
-
         if (SoapUI.getSettings().getBoolean(UISettings.DONT_DISABLE_GROOVY_LOG)) {
             initGroovyLog();
         }

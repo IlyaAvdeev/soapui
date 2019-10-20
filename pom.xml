@@ -27,7 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <requireMavenVersion-value>3.0.5</requireMavenVersion-value>
-        <maxJdkVersion-value>12</maxJdkVersion-value>
+        <targetJdk>12</targetJdk>
 
         <!-- Custom properties -->
         <assembly.build.directory>${project.build.directory}/assemblies</assembly.build.directory>
@@ -59,13 +59,6 @@
         <versions-maven-plugin-version>2.7</versions-maven-plugin-version>
         <exec-maven-plugin-version>1.6.0</exec-maven-plugin-version>
         <xmlbeans-maven-plugin-version>2.3.4</xmlbeans-maven-plugin-version>
-        <!-- org.openjfx-->
-        <javafx-base-version>12</javafx-base-version>
-        <javafx-controls-version>12</javafx-controls-version>
-        <javafx-graphics-version>12</javafx-graphics-version>
-        <javafx-media-version>12</javafx-media-version>
-        <javafx-web-version>12</javafx-web-version>
-        <javafx-swing-version>12</javafx-swing-version>
         <!-- other -->
         <maven-gitlog-plugin-version>1.9.1</maven-gitlog-plugin-version>
 
@@ -81,6 +74,8 @@
 
     <build>
         <plugins>
+
+            <!-- mvn versions:display-plugin-updates -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -89,6 +84,7 @@
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -105,23 +101,29 @@
                     </filesets>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin-version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.9</target>
+                    <source>12</source>
+                    <!--<encoding>UTF-8</encoding>-->
+                    <release>${targetJdk}</release>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin-version}</version>
                 <configuration>
                     <maxmemory>1024m</maxmemory>
+                    <doclint>none</doclint>
+                    <excludePackageNames>com.eviware.soapui.impl.wsdl.teststeps.restmockresponse</excludePackageNames>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -140,20 +142,6 @@
                             </rules>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>enforce-bytecode-version</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <enforceBytecodeVersion>
-                                    <maxJdkVersion>${maxJdkVersion-value}</maxJdkVersion>
-                                </enforceBytecodeVersion>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>
@@ -163,16 +151,19 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin-version}</version>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin-version}</version>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>

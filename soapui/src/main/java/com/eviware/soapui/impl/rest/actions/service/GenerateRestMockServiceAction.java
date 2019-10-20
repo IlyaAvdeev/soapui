@@ -17,7 +17,6 @@
 package com.eviware.soapui.impl.rest.actions.service;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
 import com.eviware.soapui.impl.rest.RestResource;
 import com.eviware.soapui.impl.rest.RestService;
 import com.eviware.soapui.impl.rest.mock.RestMockService;
@@ -34,8 +33,6 @@ import com.eviware.x.form.support.AField;
 import com.eviware.x.form.support.AForm;
 
 import java.util.List;
-
-import static com.eviware.soapui.analytics.SoapUIActions.GENERATE_REST_MOCK_FROM_NAVIGATOR;
 
 public class GenerateRestMockServiceAction extends AbstractSoapUIAction<RestService> {
     XFormDialog dialog = null;
@@ -57,7 +54,6 @@ public class GenerateRestMockServiceAction extends AbstractSoapUIAction<RestServ
                 restService.addEndpoint(mockService.getLocalEndpoint());
 
                 UISupport.showDesktopPanel(mockService);
-                Analytics.trackAction(GENERATE_REST_MOCK_FROM_NAVIGATOR);
                 maybeStart(mockService);
             }
         }

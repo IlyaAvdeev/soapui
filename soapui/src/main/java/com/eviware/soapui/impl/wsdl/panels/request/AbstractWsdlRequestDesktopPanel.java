@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.panels.request;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.support.components.ModelItemXmlEditor;
 import com.eviware.soapui.impl.support.components.RequestXmlDocument;
 import com.eviware.soapui.impl.support.components.ResponseXmlDocument;
@@ -137,7 +135,6 @@ public abstract class AbstractWsdlRequestDesktopPanel<T extends ModelItem, T2 ex
     }
 
     protected Submit doSubmit() throws SubmitException {
-        Analytics.trackAction(SoapUIActions.RUN_REQUEST_FROM_REQUEST_EDITOR, "Type", "SOAP");
         return getRequest().submit(new WsdlSubmitContext(getModelItem()), true);
     }
 

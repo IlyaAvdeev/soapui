@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.panels.testcase;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.config.TestStepConfig;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
@@ -101,10 +99,6 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragSource;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-
-import static com.eviware.soapui.analytics.SoapUIActions.ADD_NEW_TEST_STEP_FROM_TEST_CASE_PANEL;
-import static com.eviware.soapui.analytics.SoapUIActions.CREATE_LOAD_TEST_FROM_TEST_CASE_PANEL;
-import static com.eviware.soapui.analytics.SoapUIActions.CREATE_SECURITY_TEST_FROM_TEST_CASE_PANEL;
 
 /**
  * WsdlTestCase desktop panel
@@ -337,12 +331,10 @@ public class WsdlTestCaseDesktopPanel extends KeySensitiveModelItemDesktopPanel<
 
         SwingActionDelegate createLoadTestDelegate = SwingActionDelegate.createDelegate(
                 AddNewLoadTestAction.SOAPUI_ACTION_ID, getModelItem(), null, "/loadTest.png");
-        createLoadTestDelegate.getMapping().setParam(CREATE_LOAD_TEST_FROM_TEST_CASE_PANEL);
         createLoadTestButton = UISupport.createToolbarButton(createLoadTestDelegate);
 
         SwingActionDelegate createSecurityTestDelegate = SwingActionDelegate.createDelegate(
                 AddNewSecurityTestAction.SOAPUI_ACTION_ID, getModelItem(), null, "/security_test.png");
-        createSecurityTestDelegate.getMapping().setParam(CREATE_SECURITY_TEST_FROM_TEST_CASE_PANEL);
         createSecurityTestButton = UISupport.createToolbarButton(createSecurityTestDelegate);
 
         addToolbarActions(toolbar);
@@ -540,7 +532,6 @@ public class WsdlTestCaseDesktopPanel extends KeySensitiveModelItemDesktopPanel<
         public void actionPerformed(ActionEvent e) {
             canceled = false;
             runTestCase();
-            Analytics.trackAction(SoapUIActions.RUN_TEST_STEP_FROM_TOOLBAR);
         }
     }
 
@@ -719,7 +710,6 @@ public class WsdlTestCaseDesktopPanel extends KeySensitiveModelItemDesktopPanel<
                     if (testStep != null) {
                         UISupport.selectAndShow(testStep);
                     }
-                    Analytics.trackAction(ADD_NEW_TEST_STEP_FROM_TEST_CASE_PANEL, "Type", testStep.getClass().getSimpleName());
                 }
             }
         }

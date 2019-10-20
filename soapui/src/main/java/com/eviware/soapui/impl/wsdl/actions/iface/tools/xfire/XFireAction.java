@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.actions.iface.tools.xfire;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.wsdl.actions.iface.tools.support.AbstractToolsAction;
 import com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ArgumentBuilder;
 import com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ProcessToolRunner;
@@ -40,8 +38,6 @@ import com.eviware.x.form.XFormTextField;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-
-import static com.eviware.soapui.analytics.SoapUIActions.USE_XFIRE_1_STUBS_TOOL;
 
 /**
  * Invokes XFire wsgen utility
@@ -122,7 +118,6 @@ public class XFireAction extends AbstractToolsAction<Interface> {
         builder.directory(new File(xfireDir));
 
         toolHost.run(new ProcessToolRunner(builder, "XFire 1.X WsGen", modelItem));
-        Analytics.trackAction(USE_XFIRE_1_STUBS_TOOL);
     }
 
     private String buildClasspath(String xfireDir, String antDir, String additional) {

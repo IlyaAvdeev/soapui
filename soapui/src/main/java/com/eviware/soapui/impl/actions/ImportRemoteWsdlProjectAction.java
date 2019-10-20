@@ -18,8 +18,6 @@ package com.eviware.soapui.impl.actions;
 
 import com.eviware.soapui.SoapUIExtensionClassLoader;
 import com.eviware.soapui.SoapUIExtensionClassLoader.SoapUIClassLoaderState;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.WorkspaceImpl;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.support.MessageSupport;
@@ -52,7 +50,6 @@ public class ImportRemoteWsdlProjectAction extends AbstractSoapUIAction<Workspac
                     UISupport.select(project);
                 }
             }
-            Analytics.trackAction(SoapUIActions.IMPORT_REMOTE_PROJECT);
         } catch (Exception ex) {
             UISupport.showErrorMessage(ex);
         } finally {

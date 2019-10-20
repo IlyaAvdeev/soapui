@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.panels.teststeps;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.config.JdbcRequestTestStepConfig;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.support.components.ModelItemXmlEditor;
@@ -702,7 +700,6 @@ public class JdbcRequestTestStepDesktopPanel extends ModelItemDesktopPanel<JdbcR
     }
 
     protected Submit doSubmit() throws SubmitException {
-        Analytics.trackAction(SoapUIActions.RUN_TEST_STEP_FROM_PANEL, "StepType", "JDBC");
         return jdbcRequestTestStep.getJdbcRequest().submit(new WsdlTestRunContext(getModelItem()), true);
     }
 

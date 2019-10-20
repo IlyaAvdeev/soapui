@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.panels.testsuite;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.WsdlTestSuite;
 import com.eviware.soapui.impl.wsdl.actions.testsuite.AddNewTestCaseAction;
@@ -268,7 +266,6 @@ public class WsdlTestSuiteDesktopPanel extends KeySensitiveModelItemDesktopPanel
         JXToolBar toolbar = UISupport.createToolbar();
         SwingActionDelegate testCaseDelegate = SwingActionDelegate.createDelegate(
                 AddNewTestCaseAction.SOAPUI_ACTION_ID, getModelItem(), null, "/testcase.png");
-        testCaseDelegate.getMapping().setParam(SoapUIActions.CREATE_TEST_CASE_FROM_TEST_TEST_SUITE_PANEL);
         toolbar.add(UISupport.createToolbarButton(testCaseDelegate));
         toolbar.addGlue();
         toolbar.add(UISupport.createToolbarButton(new ShowOnlineHelpAction(HelpUrls.TESTSUITEEDITOR_HELP_URL)));
@@ -337,7 +334,6 @@ public class WsdlTestSuiteDesktopPanel extends KeySensitiveModelItemDesktopPanel
 
         public void actionPerformed(ActionEvent e) {
             runTestSuite();
-            Analytics.trackAction(SoapUIActions.RUN_TEST_CASE_FROM_TOOLBAR, "RunType", getModelItem().getRunType().name());
         }
     }
 
