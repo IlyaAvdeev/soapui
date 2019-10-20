@@ -1264,10 +1264,11 @@ public class SoapUI {
 
     private static class ShowStarterPageAction extends AbstractAction {
         public ShowStarterPageAction() {
-            super("Starter Page");
-            putValue(Action.SHORT_DESCRIPTION, "Shows the starter page");
+            super("Start Page");
+            putValue(Action.SHORT_DESCRIPTION, "Show start page");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             showStarterPage();
         }
@@ -1275,10 +1276,11 @@ public class SoapUI {
 
     private class ToolbarForumSearchAction extends AbstractAction {
         public ToolbarForumSearchAction() {
-            putValue(Action.SHORT_DESCRIPTION, "Searches the Smartbear Community Forum");
+            putValue(Action.SHORT_DESCRIPTION, "I'm Feeling Lucky!");
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/find.png"));
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             doCommunitySearch(searchField.getText());
         }
@@ -1287,9 +1289,10 @@ public class SoapUI {
     private class SearchForumAction extends AbstractAction {
         public SearchForumAction() {
             super("Search Forum");
-            putValue(Action.SHORT_DESCRIPTION, "Searches the Smartbear Community Forum");
+            putValue(Action.SHORT_DESCRIPTION, "Leverage community experience");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             String text = UISupport.prompt("Search Text", "Search Community Forum", "");
             if (text == null) {
@@ -1509,7 +1512,7 @@ public class SoapUI {
     private static class ImportWsdlProjectActionDelegate extends AbstractAction {
         public ImportWsdlProjectActionDelegate() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/import_toolbar_icon.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Open SoapUI Project");
+            putValue(Action.SHORT_DESCRIPTION, "Open SoapUI project");
             putValue(Action.NAME, "Open");
         }
 
@@ -1521,7 +1524,7 @@ public class SoapUI {
     private static class SaveAllActionDelegate extends AbstractAction {
         public SaveAllActionDelegate() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/Save-all.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Saves all projects in the current workspace");
+            putValue(Action.SHORT_DESCRIPTION, "Save all projects");
             putValue(Action.NAME, "Save All");
         }
 
@@ -1533,7 +1536,7 @@ public class SoapUI {
     private class PreferencesActionDelegate extends AbstractAction {
         public PreferencesActionDelegate() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/preferences_toolbar_icon.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Configure Preferences");
+            putValue(Action.SHORT_DESCRIPTION, "Configure preferences");
             putValue(Action.NAME, "Preferences");
         }
 
