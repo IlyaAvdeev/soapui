@@ -17,7 +17,6 @@
 package com.eviware.soapui.impl;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
 import com.eviware.soapui.config.ProjectConfig;
 import com.eviware.soapui.config.SoapuiWorkspaceDocumentConfig;
 import com.eviware.soapui.config.WorkspaceProjectConfig;
@@ -58,8 +57,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.eviware.soapui.analytics.SoapUIActions.IMPORT_PROJECT_FROM_HIGHER_VERSION;
-import static com.eviware.soapui.analytics.SoapUIActions.IMPORT_PRO_PROJECT;
 import static com.eviware.soapui.impl.wsdl.WsdlProject.ProjectEncryptionStatus;
 import static com.eviware.soapui.impl.wsdl.WsdlProject.ProjectEncryptionStatus.NOT_ENCRYPTED;
 
@@ -184,7 +181,6 @@ public class WorkspaceImpl extends AbstractModelItem implements Workspace {
                 if (((WsdlProject) project).isFromReadyApi()) {
                     ProjectConfig config = ((WsdlProject) project).getProjectDocument().getSoapuiProject();
                     String version = StringUtils.isNullOrEmpty(config.getUpdated()) ? "" : StringUtils.getSubstringBeforeFirstWhitespace(config.getUpdated());
-                    Analytics.trackAction(IMPORT_PRO_PROJECT, "project_version", StringUtils.hasContent(version) ? version : "UNDEFINED");
                     readyProjectsList.add(
                             messages.get(
                                     "Compatibility.with.ReadyAPI.one.project",
@@ -193,7 +189,6 @@ public class WorkspaceImpl extends AbstractModelItem implements Workspace {
                 } else if (((WsdlProject) project).isFromNewerVersion()) {
                     ProjectConfig config = ((WsdlProject) project).getProjectDocument().getSoapuiProject();
                     String version = config.getSoapuiVersion();
-                    Analytics.trackAction(IMPORT_PROJECT_FROM_HIGHER_VERSION, "project_version", version);
                     newerProjectsList.add(
                             messages.get(
                                     "Compatibility.with.SoapUI.one.project",

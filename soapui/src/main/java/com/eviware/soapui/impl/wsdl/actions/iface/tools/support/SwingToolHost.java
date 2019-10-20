@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.actions.iface.tools.support;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.model.ModelItem;
 import com.eviware.soapui.support.UISupport;
 

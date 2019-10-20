@@ -17,7 +17,6 @@
 package com.eviware.soapui.impl.rest.actions.mock;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
 import com.eviware.soapui.impl.rest.RestRequest;
 import com.eviware.soapui.impl.rest.mock.RestMockAction;
 import com.eviware.soapui.impl.rest.mock.RestMockResponse;
@@ -34,8 +33,6 @@ import com.eviware.soapui.support.types.StringToStringsMap;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.eviware.soapui.analytics.SoapUIActions.ADD_REST_REQUEST_TO_REST_MOCK_SERVICE;
 
 public class AddRestRequestToMockServiceAction extends AbstractSoapUIAction<RestRequest> {
 
@@ -83,7 +80,6 @@ public class AddRestRequestToMockServiceAction extends AbstractSoapUIAction<Rest
 
         addRequestToMockService(restRequest, mockService);
         restRequest.getOperation().getService().addEndpoint(mockService.getLocalEndpoint());
-        Analytics.trackAction(ADD_REST_REQUEST_TO_REST_MOCK_SERVICE);
     }
 
 

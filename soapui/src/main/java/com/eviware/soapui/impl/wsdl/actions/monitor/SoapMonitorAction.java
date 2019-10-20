@@ -17,8 +17,6 @@
 package com.eviware.soapui.impl.wsdl.actions.monitor;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.impl.wsdl.monitor.ContentTypes;
 import com.eviware.soapui.impl.wsdl.monitor.SoapMonitor;
@@ -39,8 +37,6 @@ import com.eviware.x.form.support.AField;
 import com.eviware.x.form.support.AField.AFieldType;
 import com.eviware.x.form.support.AForm;
 import com.eviware.x.form.support.APage;
-
-import static com.eviware.soapui.analytics.SoapUIActions.LAUNCH_HTTP_MONITOR;
 
 public class SoapMonitorAction extends AbstractSoapUIAction<WsdlProject> {
 
@@ -71,7 +67,6 @@ public class SoapMonitorAction extends AbstractSoapUIAction<WsdlProject> {
                 loadAllInterfacesIn(project);
 
                 soapMonitor = dialogHandler.createSoapMonitor();
-                Analytics.trackAction(LAUNCH_HTTP_MONITOR);
             } catch (Exception e) {
                 SoapUI.logError(e);
             } finally {

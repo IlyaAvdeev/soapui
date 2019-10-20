@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.actions.operation;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.wsdl.WsdlOperation;
 import com.eviware.soapui.impl.wsdl.WsdlRequest;
 import com.eviware.soapui.settings.WsdlSettings;
@@ -58,7 +56,5 @@ public class NewRequestAction extends AbstractSoapUIAction<WsdlOperation> {
         }
 
         UISupport.showDesktopPanel(newRequest);
-
-        Analytics.trackAction(SoapUIActions.CREATE_REQUEST_FOR_OPERATION);
     }
 }

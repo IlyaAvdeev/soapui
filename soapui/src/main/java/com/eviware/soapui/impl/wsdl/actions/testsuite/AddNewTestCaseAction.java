@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.actions.testsuite;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.wsdl.WsdlTestSuite;
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase;
 import com.eviware.soapui.support.StringUtils;
@@ -52,11 +50,6 @@ public class AddNewTestCaseAction extends AbstractSoapUIAction<WsdlTestSuite> {
         }
 
         WsdlTestCase testCase = testSuite.addNewTestCase(name);
-        if (param != null && param instanceof SoapUIActions) {
-            Analytics.trackAction(SoapUIActions.CREATE_TEST_CASE_FROM_TEST_TEST_SUITE_PANEL);
-        } else {
-            Analytics.trackAction(SoapUIActions.CREATE_TEST_CASE);
-        }
         UISupport.showDesktopPanel(testCase);
     }
 }

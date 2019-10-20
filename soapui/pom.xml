@@ -64,9 +64,10 @@
                 </executions>
                 <inherited>true</inherited>
                 <configuration>
-                    <javaSource>1.8</javaSource>
                     <verbose>false</verbose>
                     <schemaDirectory>src/main/xsd</schemaDirectory>
+                    <!--<compiler>C:\Program Files\Java\jdk1.8.0_231\bin\javac</compiler>-->
+                    <javaSource>1.8</javaSource>
                 </configuration>
             </plugin>
 
@@ -195,19 +196,6 @@
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
-        </dependency>
-
-        <!-- In-app analytics -->
-        <dependency>
-            <groupId>com.smartbear.utils.analytics</groupId>
-            <artifactId>analytics-core</artifactId>
-            <version>5.5.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.smartbear.utils.analytics</groupId>
-            <artifactId>out-app-analytics-provider</artifactId>
-            <version>5.5.0</version>
         </dependency>
 
         <!-- JGoodies -->

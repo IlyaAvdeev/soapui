@@ -27,7 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <requireMavenVersion-value>3.0.5</requireMavenVersion-value>
-        <targetJdk>13</targetJdk>
+        <targetJdk>12</targetJdk>
 
         <!-- Custom properties -->
         <assembly.build.directory>${project.build.directory}/assemblies</assembly.build.directory>
@@ -74,16 +74,8 @@
 
     <build>
         <plugins>
-            <!-- mvn versions:display-plugin-updates -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <generateBackupPoms>false</generateBackupPoms>
-                </configuration>
-            </plugin>
 
+            <!-- mvn versions:display-plugin-updates -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -115,6 +107,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin-version}</version>
                 <configuration>
+                    <source>12</source>
+                    <!--<encoding>UTF-8</encoding>-->
                     <release>${targetJdk}</release>
                 </configuration>
             </plugin>
@@ -125,6 +119,8 @@
                 <version>${maven-javadoc-plugin-version}</version>
                 <configuration>
                     <maxmemory>1024m</maxmemory>
+                    <doclint>none</doclint>
+                    <excludePackageNames>com.eviware.soapui.impl.wsdl.teststeps.restmockresponse</excludePackageNames>
                 </configuration>
             </plugin>
 

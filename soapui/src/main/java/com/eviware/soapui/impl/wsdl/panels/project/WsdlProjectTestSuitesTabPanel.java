@@ -16,8 +16,6 @@
 
 package com.eviware.soapui.impl.wsdl.panels.project;
 
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.SoapUIActions;
 import com.eviware.soapui.impl.support.actions.ShowOnlineHelpAction;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.impl.wsdl.actions.project.AddNewTestSuiteAction;
@@ -223,7 +221,6 @@ public class WsdlProjectTestSuitesTabPanel extends JPanel {
         JXToolBar toolbar = UISupport.createToolbar();
         SwingActionDelegate addTestSuiteDelegate = SwingActionDelegate.createDelegate(
                 AddNewTestSuiteAction.SOAPUI_ACTION_ID, project, null, "/test_suite.png");
-        addTestSuiteDelegate.getMapping().setParam(SoapUIActions.CREATE_TEST_SUITE_FROM_PROJECT_PANEL);
 
         toolbar.add(UISupport.createToolbarButton(addTestSuiteDelegate));
 
@@ -282,7 +279,6 @@ public class WsdlProjectTestSuitesTabPanel extends JPanel {
 
         public void actionPerformed(ActionEvent e) {
             runProject();
-            Analytics.trackAction(SoapUIActions.RUN_TEST_SUITE_FROM_TOOLBAR);
         }
     }
 

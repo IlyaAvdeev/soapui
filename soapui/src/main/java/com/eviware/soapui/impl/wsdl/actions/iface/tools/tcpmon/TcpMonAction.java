@@ -17,7 +17,6 @@
 package com.eviware.soapui.impl.wsdl.actions.iface.tools.tcpmon;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
 import com.eviware.soapui.impl.wsdl.WsdlInterface;
 import com.eviware.soapui.impl.wsdl.actions.iface.tools.support.AbstractToolsAction;
 import com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ArgumentBuilder;
@@ -39,8 +38,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.eviware.soapui.analytics.SoapUIActions.USE_TCP_MON_TOOL;
 
 /**
  * Invokes Apache TCPmon tool
@@ -118,7 +115,6 @@ public class TcpMonAction extends AbstractToolsAction<WsdlInterface> {
 
         builder.start();
         closeDialog(modelItem);
-        Analytics.trackAction(USE_TCP_MON_TOOL);
     }
 
     private ArgumentBuilder buildArgs(WsdlInterface modelItem) throws IOException {

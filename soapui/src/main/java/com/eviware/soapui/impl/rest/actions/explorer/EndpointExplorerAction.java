@@ -1,7 +1,6 @@
 package com.eviware.soapui.impl.rest.actions.explorer;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.impl.rest.actions.explorer.callback.EndpointExplorerCallback;
 import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.components.PagePropertyMapper;
 import com.eviware.soapui.support.components.WebViewBasedBrowserComponent;
@@ -67,7 +66,7 @@ public class EndpointExplorerAction extends AbstractAction {
         }
 
         browser.addJavaScriptEventHandler("closeCallback", this);
-        browser.addJavaScriptEventHandler("inspectorCallback", new EndpointExplorerCallback(browser));
+        browser.addJavaScriptEventHandler("inspectorCallback", null);
     }
 
     public void close() {

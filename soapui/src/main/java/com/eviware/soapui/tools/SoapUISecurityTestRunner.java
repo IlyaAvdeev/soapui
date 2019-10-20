@@ -17,8 +17,6 @@
 package com.eviware.soapui.tools;
 
 import com.eviware.soapui.SoapUI;
-import com.eviware.soapui.analytics.Analytics;
-import com.eviware.soapui.analytics.AnalyticsHelper;
 import com.eviware.soapui.impl.wsdl.WsdlProject;
 import com.eviware.soapui.impl.wsdl.WsdlTestSuite;
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase;
@@ -56,8 +54,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.eviware.soapui.analytics.SoapUIActions.LAUNCH_SECURITY_TEST_RUNNER;
-import static com.eviware.soapui.analytics.SoapUIActions.LAUNCH_SECURITY_TEST_RUNNER_FROM_UI;
 import static com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ProcessToolRunner.STARTED_FROM_GUI;
 
 /**
@@ -123,14 +119,6 @@ public class SoapUISecurityTestRunner extends SoapUITestCaseRunner implements Se
     }
 
     public boolean runRunner() throws Exception {
-        AnalyticsHelper.initializeAnalytics();
-        Analytics.trackSessionStart();
-        if (System.getenv(STARTED_FROM_GUI) == null) {
-            Analytics.trackAction(LAUNCH_SECURITY_TEST_RUNNER);
-        } else {
-            Analytics.trackAction(LAUNCH_SECURITY_TEST_RUNNER_FROM_UI);
-        }
-
         initGroovyLog();
         getAssertions().clear();
         String projectFile = getProjectFile();
