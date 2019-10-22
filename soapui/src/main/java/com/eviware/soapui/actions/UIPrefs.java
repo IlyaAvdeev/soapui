@@ -58,7 +58,6 @@ public class UIPrefs implements Prefs {
     public static final String RAW_REQUEST_MESSAGE_SIZE = "Size of Raw Request Message to Show";
     public static final String WRAP_RAW_MESSAGES = "Wrap content in Raw Message Viewers";
     public static final String DISABLE_TOOLTIPS = "Disable Tooltips";
-    public static final String DISABLE_ANALYTICS = "Disable Usage Statistics";
 
     private SimpleForm editorForm;
     private final String title;
@@ -127,7 +126,6 @@ public class UIPrefs implements Prefs {
             editorForm.appendTextField(RAW_RESPONSE_MESSAGE_SIZE, "Sets the size of raw response message to show.");
             editorForm.appendTextField(RAW_REQUEST_MESSAGE_SIZE, "Sets the size of raw request message to show.");
             editorForm.appendCheckBox(WRAP_RAW_MESSAGES, "Wraps content in Raw Message Viewers", false);
-            editorForm.appendCheckBox(DISABLE_ANALYTICS, "Do not send usage statistics", false);
         }
 
         return editorForm;
