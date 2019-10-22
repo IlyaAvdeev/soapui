@@ -24,7 +24,6 @@ import com.eviware.soapui.impl.rest.RestResource;
 import com.eviware.soapui.impl.rest.RestService;
 import com.eviware.soapui.impl.rest.RestServiceFactory;
 import com.eviware.soapui.impl.rest.RestURIParser;
-import com.eviware.soapui.impl.rest.actions.explorer.RequestInspectionData;
 import com.eviware.soapui.impl.rest.support.RestParamProperty;
 import com.eviware.soapui.impl.rest.support.RestParamsPropertyHolder;
 import com.eviware.soapui.impl.rest.support.RestURIParserImpl;
@@ -114,21 +113,6 @@ public class RestServiceBuilder {
         if (showDesktopPanel) {
             UISupport.select(restRequest);
             UISupport.showDesktopPanel(restRequest);
-        }
-        return restRequest;
-    }
-
-    public RestRequest createRestServiceFromInspectionData(WsdlProject project, String URI,
-                                                           RestRequestInterface.HttpMethod method,
-                                                           RequestInspectionData inspectionData,
-                                                           boolean showDesktopPanel,
-                                                           String requestName) throws MalformedURLException {
-        RestRequest restRequest = createRestServiceWithMethod(project, URI, method, showDesktopPanel, requestName);
-        if (inspectionData.getHeaders() != null) {
-            applyHeaders(restRequest, inspectionData.getHeaders());
-        }
-        if (StringUtils.hasContent(inspectionData.getRequestBody())) {
-            restRequest.setRequestContent(inspectionData.getRequestBody());
         }
         return restRequest;
     }
