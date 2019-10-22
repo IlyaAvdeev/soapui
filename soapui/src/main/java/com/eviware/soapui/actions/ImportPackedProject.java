@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ImportPackedProject extends AbstractSoapUIAction<WorkspaceImpl> {
     public ImportPackedProject() {
-        super("Import Packed Project", "Import Packed Project");
+        super("Open Packed Project", "Opens packed project");
     }
 
     @Override
