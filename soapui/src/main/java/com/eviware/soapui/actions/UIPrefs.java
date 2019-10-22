@@ -171,7 +171,6 @@ public class UIPrefs implements Prefs {
         settings.setString(UISettings.RAW_RESPONSE_MESSAGE_SIZE, values.get(RAW_RESPONSE_MESSAGE_SIZE));
         settings.setString(UISettings.RAW_REQUEST_MESSAGE_SIZE, values.get(RAW_REQUEST_MESSAGE_SIZE));
         settings.setBoolean(UISettings.WRAP_RAW_MESSAGES, values.getBoolean(WRAP_RAW_MESSAGES));
-        settings.setBoolean(UISettings.DISABLE_ANALYTICS, values.getBoolean(DISABLE_ANALYTICS));
 
         SoapUI.initAutoSaveTimer();
         SoapUI.initGCTimer();
@@ -212,7 +211,6 @@ public class UIPrefs implements Prefs {
         values.put(RAW_RESPONSE_MESSAGE_SIZE, settings.getString(UISettings.RAW_RESPONSE_MESSAGE_SIZE, "10000"));
         values.put(RAW_REQUEST_MESSAGE_SIZE, settings.getString(UISettings.RAW_REQUEST_MESSAGE_SIZE, "10000"));
         values.put(WRAP_RAW_MESSAGES, settings.getBoolean(UISettings.WRAP_RAW_MESSAGES));
-        values.put(DISABLE_ANALYTICS, settings.getBoolean(UISettings.DISABLE_ANALYTICS));
 
         return values;
     }
