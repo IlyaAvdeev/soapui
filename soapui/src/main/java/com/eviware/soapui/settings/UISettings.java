@@ -91,13 +91,8 @@ public interface UISettings {
 
     public static final String SHOW_STARTUP_PAGE = UISettings.class.getSimpleName() + "@show_startup_page";
     public static final String DISABLE_TOOLTIPS = UISettings.class.getSimpleName() + "@disable_tooltips";
-    public static final String SHOULD_DISPLAY_ANALYTICS_DIALOG = UISettings.class.getSimpleName() + "@display_analytics_opt_dialog";
 
     public static final String SHOW_ENDPOINT_EXPLORER_ON_START = UISettings.class.getSimpleName() + "@show_endpoint_explorer";
-    public static final String SHOW_STAY_TUNED_DIALOG = UISettings.class.getSimpleName() + "@show_stay_tuned";
-
-    @Setting(name = "Disable usage statistics", description = "Stop sending usage statistics", type = SettingType.BOOLEAN)
-    public static final String DISABLE_ANALYTICS = UISettings.class.getSimpleName() + "@disable_analytics";
 
     @Setting(name = "Normalize Line-Breaks", description = "Normalize line-breaks when saving project", type = SettingType.BOOLEAN)
     public static final String LINEBREAK = UISettings.class.getSimpleName() + "@" + "normalize_line-breaks";

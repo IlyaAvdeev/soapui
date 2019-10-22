@@ -20,7 +20,6 @@ import com.eviware.soapui.actions.SaveAllProjectsAction;
 import com.eviware.soapui.actions.ShowSystemPropertiesAction;
 import com.eviware.soapui.actions.SoapUIPreferencesAction;
 import com.eviware.soapui.actions.StartHermesJMSButtonAction;
-import com.eviware.soapui.actions.SumbitUserInfoAction;
 import com.eviware.soapui.actions.SwitchDesktopPanelAction;
 import com.eviware.soapui.actions.VersionUpdateAction;
 import com.eviware.soapui.autoupdate.SoapUIAutoUpdaterUtils;
@@ -189,7 +188,6 @@ import java.util.prefs.BackingStoreException;
 
 import static com.eviware.soapui.impl.support.HttpUtils.urlEncodeWithUtf8;
 import static com.eviware.soapui.settings.UISettings.SHOW_ENDPOINT_EXPLORER_ON_START;
-import static com.eviware.soapui.settings.UISettings.SHOW_STAY_TUNED_DIALOG;
 
 /**
  * Main SoapUI entry point.
@@ -980,13 +978,6 @@ public class SoapUI {
         }
 
         if (SoapUI.usingGraphicalEnvironment()) {
-            if (workspace.isSupportInformationDialog()
-                    || SoapUI.getSettings().getBoolean(SHOW_STAY_TUNED_DIALOG, true)) {
-                SumbitUserInfoAction collector = new SumbitUserInfoAction();
-                collector.show();
-                SoapUI.getSettings().setBoolean(SHOW_STAY_TUNED_DIALOG, false);
-                workspace.setSupportInformationDialog(false);
-            }
             if (SoapUI.getSettings().getBoolean(SHOW_ENDPOINT_EXPLORER_ON_START, true)) {
                 showEndpointExplorer();
             }
