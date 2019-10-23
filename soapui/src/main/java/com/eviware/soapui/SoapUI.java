@@ -367,6 +367,11 @@ public class SoapUI {
         mainToolbar.addGlue();
         searchField = new JTextField(20) {
             @Override
+            public Dimension getPreferredSize() {
+                return UISupport.getScaledDimension(super.getPreferredSize());
+            }
+
+            @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.LIGHT_GRAY);

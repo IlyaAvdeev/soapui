@@ -1009,4 +1009,47 @@ public class UISupport {
         }
         return null;
     }
+
+    /**
+     * Default DPI for Windows platform
+     */
+    public static final int DEFAULT_DPI = 96;
+
+    /**
+     * Recalculates the area dimension into scaled size
+     * @param originalDimension original area size
+     * @return scaled area size
+     */
+    public static Dimension getScaledDimension(Dimension originalDimension) {
+        if (isMac()) {
+            return originalDimension;
+        }
+        int scale = Toolkit.getDefaultToolkit().getScreenResolution();
+        int width = (originalDimension.width * scale) / DEFAULT_DPI;
+        int height = (originalDimension.height * scale) / DEFAULT_DPI;
+        return new Dimension(width, height);
+    }
+
+    /**
+     * Recalculates the area dimension represented by its width & height into scaled size
+     * @param width original width
+     * @param height original height
+     * @return scaled area size
+     */
+    public static Dimension getScaledDimension(int width, int height) {
+        return getScaledDimension(new Dimension(width, height));
+    }
+
+    /**
+     * Recalculates the single value basing on the DPI
+     * @param value original value
+     * @return scaled value
+     */
+    public static int getScaledValue(int value) {
+        if (isMac()) {
+            return value;
+        }
+        int scale = Toolkit.getDefaultToolkit().getScreenResolution();
+        return (value * scale) / DEFAULT_DPI;
+    }
 }
