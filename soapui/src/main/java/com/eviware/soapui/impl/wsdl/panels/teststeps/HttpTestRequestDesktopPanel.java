@@ -54,6 +54,7 @@ import com.eviware.soapui.support.components.JInspectorPanelFactory;
 import com.eviware.soapui.support.components.JUndoableTextField;
 import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.log.JLogList;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -76,20 +77,31 @@ import java.util.Date;
 
 public class HttpTestRequestDesktopPanel extends
         AbstractHttpXmlRequestDesktopPanel<HttpTestRequestStepInterface, HttpTestRequestInterface<?>> {
-    private JLogList logArea;
-    private InternalTestMonitorListener testMonitorListener = new InternalTestMonitorListener();
-    private JButton addAssertionButton;
-    protected boolean updatingRequest;
-    private AssertionsPanel assertionsPanel;
-    private JInspectorPanel inspectorPanel;
-    private JComponentInspector<?> assertionInspector;
-    private JComponentInspector<?> logInspector;
-    private InternalAssertionsListener assertionsListener = new InternalAssertionsListener();
-    private long startTime;
-    private boolean updating;
+
+    //The definition of the controls is placed in the order of appearance on the screen
+    //from top to bottom sequentially
+
+    //top bar
+    private JComboBox methodCombo;
     private JUndoableTextField pathTextField;
     private JCheckBox downloadResources;
-    private JComboBox methodCombo;
+
+    //middle
+    private JInspectorPanel inspectorPanel;
+
+    //bottom panel (Assertion)
+    private JButton addAssertionButton;
+    private JComponentInspector<?> assertionInspector;
+    private AssertionsPanel assertionsPanel;
+    //bottom panel (Log area)
+    private JLogList logArea;
+    private JComponentInspector<?> logInspector;
+
+    private InternalTestMonitorListener testMonitorListener = new InternalTestMonitorListener();
+    private InternalAssertionsListener assertionsListener = new InternalAssertionsListener();
+
+    private long startTime;
+    private boolean updating;
 
     public HttpTestRequestDesktopPanel(HttpTestRequestStepInterface testStep) {
         super(testStep, testStep.getTestRequest());
@@ -193,12 +205,10 @@ public class HttpTestRequestDesktopPanel extends
         methodCombo = new JComboBox(RestRequestInterface.HttpMethod.getMethods());
 
         methodCombo.setSelectedItem(getRequest().getMethod());
-        methodCombo.setToolTipText("Set desired HTTP method");
+        methodCombo.setToolTipText("Select HTTP method");
         methodCombo.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                updatingRequest = true;
                 getRequest().setMethod((RestRequestInterface.HttpMethod) methodCombo.getSelectedItem());
-                updatingRequest = false;
             }
         });
 
@@ -231,7 +241,6 @@ public class HttpTestRequestDesktopPanel extends
                         }
                     });
                 }
-
                 updating = false;
             }
         });
