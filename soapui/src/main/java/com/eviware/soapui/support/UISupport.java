@@ -98,8 +98,6 @@ import java.util.Map;
 
 /**
  * Facade for common UI-related tasks
- *
- * @author Ole.Matzura
  */
 
 public class UISupport {

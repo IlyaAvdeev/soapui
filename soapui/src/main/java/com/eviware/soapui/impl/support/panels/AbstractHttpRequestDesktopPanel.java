@@ -391,7 +391,7 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
         JPanel comboBoxPanel = new JPanel(new BorderLayout(0, 0));
         buildLockIcon();
         comboBoxPanel.add(lockIcon, BorderLayout.WEST);
-        if (endpointComponent != null) {
+        if (endpointCombo != null) {
             comboBoxPanel.add(endpointCombo, BorderLayout.CENTER);
         }
         return comboBoxPanel;
