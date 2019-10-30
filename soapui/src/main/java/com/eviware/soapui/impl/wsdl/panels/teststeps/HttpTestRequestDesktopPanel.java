@@ -56,13 +56,7 @@ import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.log.JLogList;
 import net.miginfocom.swing.MigLayout;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListModel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -273,6 +267,7 @@ public class HttpTestRequestDesktopPanel extends
         downloadResources.setPreferredSize(new Dimension(17, 17));
         downloadResources.setToolTipText("Download all included resources as attachments!");
         downloadResources.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (1001 == e.getID() && getModelItem() instanceof HttpTestRequestStep) {
