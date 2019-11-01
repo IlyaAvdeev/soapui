@@ -214,6 +214,15 @@ public class HttpTestRequestDesktopPanel extends
         toolbar.addSeparator();
         addMethodCombo(toolbar);
 
+        toolbar.add(createPathField());
+
+        addCheckBox(toolbar);
+    }
+
+    private JComponent createPathField () {
+        MigLayout layout = new MigLayout("", "[]", "[][]");
+        JPanel panel = new JPanel(layout);
+
         pathTextField = new JUndoableTextField();
         pathTextField.setPreferredSize(new Dimension(300, 20));
         pathTextField.setText(getRequest().getEndpoint());
@@ -250,10 +259,12 @@ public class HttpTestRequestDesktopPanel extends
         JPanel pathPanel = new JPanel(new BorderLayout(0, 0));
         pathPanel.add(getLockIcon(), BorderLayout.WEST);
         pathPanel.add(pathTextField, BorderLayout.CENTER);
-        toolbar.addLabeledFixed("Request URL:", pathPanel);
 
-        toolbar.addSeparator();
-        addCheckBox(toolbar);
+
+        panel.add(new JLabel("Request URL"), "wrap");
+        panel.add(pathPanel);
+
+        return panel;
     }
 
     private void addCheckBox(JXToolBar toolbar) {
