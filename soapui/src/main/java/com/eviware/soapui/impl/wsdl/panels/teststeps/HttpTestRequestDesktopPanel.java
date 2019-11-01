@@ -211,7 +211,6 @@ public class HttpTestRequestDesktopPanel extends
     }
 
     protected void addToolbarComponents(JXToolBar toolbar) {
-        toolbar.addSeparator();
         addMethodCombo(toolbar);
 
         toolbar.add(createPathField());
@@ -268,6 +267,8 @@ public class HttpTestRequestDesktopPanel extends
     }
 
     private void addCheckBox(JXToolBar toolbar) {
+        MigLayout layout = new MigLayout("", "[][]", "[]");
+        JPanel panel = new JPanel(layout);
         downloadResources = new JCheckBox();
         try {
             downloadResources.setSelected(((HttpRequest) getModelItem().getHttpRequest())
@@ -276,7 +277,7 @@ public class HttpTestRequestDesktopPanel extends
             SoapUI.logError(cce);
         }
         downloadResources.setPreferredSize(new Dimension(17, 17));
-        downloadResources.setToolTipText("Download all included resources as attachments!");
+        downloadResources.setToolTipText("Download all included resources as attachments");
         downloadResources.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -288,12 +289,11 @@ public class HttpTestRequestDesktopPanel extends
                 } catch (Exception cce) {
                     SoapUI.logError(cce);
                 }
-
             }
         });
-        toolbar.addLabeledFixed("Download Resources", downloadResources);
-
-        toolbar.addSeparator();
+        panel.add(downloadResources);
+        panel.add(new JLabel("Download Resources"));
+        toolbar.add(panel);
     }
 
     @Override
@@ -307,7 +307,7 @@ public class HttpTestRequestDesktopPanel extends
         UISupport.setPreferredHeight(toolbar, GlobalUIStyles.BIG_TOOLBAR_HEIGHT);
         addToolbarComponents(toolbar);
 
-        panel.add(toolbar, BorderLayout.SOUTH);
+        panel.add(toolbar, BorderLayout.CENTER);
         return panel;
 
     }
