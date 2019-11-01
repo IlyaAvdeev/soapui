@@ -86,10 +86,7 @@ import java.beans.PropertyChangeListener;
 
 /**
  * Abstract DesktopPanel for HttpRequests
- *
- * @author Ole.Matzura
  */
-
 public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 extends AbstractHttpRequestInterface<?>>
         extends ModelItemDesktopPanel<T> implements SubmitListener {
     private final static Logger log = Logger.getLogger(AbstractHttpRequestDesktopPanel.class);

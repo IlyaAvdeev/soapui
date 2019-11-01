@@ -69,11 +69,7 @@ import com.eviware.soapui.monitor.TestMonitor;
 import com.eviware.soapui.settings.ProxySettings;
 import com.eviware.soapui.settings.UISettings;
 import com.eviware.soapui.settings.VersionUpdateSettings;
-import com.eviware.soapui.support.DefaultHyperlinkListener;
-import com.eviware.soapui.support.SoapUIException;
-import com.eviware.soapui.support.StringUtils;
-import com.eviware.soapui.support.Tools;
-import com.eviware.soapui.support.UISupport;
+import com.eviware.soapui.support.*;
 import com.eviware.soapui.support.action.SoapUIAction;
 import com.eviware.soapui.support.action.SoapUIActionRegistry;
 import com.eviware.soapui.support.action.swing.ActionList;
@@ -349,7 +345,7 @@ public class SoapUI {
 
     private JComponent buildToolbar() {
         mainToolbar = new JXToolBar();
-        UISupport.setPreferredHeight(mainToolbar, JXToolBar.MAIN_COMPONENT_HEIGHT);
+        UISupport.setPreferredHeight(mainToolbar, GlobalUIStyles.MAIN_TOOLBAR_HEIGHT);
         mainToolbar.setFloatable(false);
         mainToolbar.setRollover(true);
         mainToolbar.putClientProperty(Options.HEADER_STYLE_KEY, HeaderStyle.BOTH);
