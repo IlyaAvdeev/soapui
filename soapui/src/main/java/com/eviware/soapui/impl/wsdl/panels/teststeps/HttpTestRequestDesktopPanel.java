@@ -43,11 +43,7 @@ import com.eviware.soapui.model.testsuite.TestAssertion;
 import com.eviware.soapui.model.testsuite.TestCaseRunner;
 import com.eviware.soapui.monitor.support.TestMonitorListenerAdapter;
 import com.eviware.soapui.security.SecurityTestRunner;
-import com.eviware.soapui.support.DateUtil;
-import com.eviware.soapui.support.DocumentListenerAdapter;
-import com.eviware.soapui.support.ListDataChangeListener;
-import com.eviware.soapui.support.StringUtils;
-import com.eviware.soapui.support.UISupport;
+import com.eviware.soapui.support.*;
 import com.eviware.soapui.support.components.JComponentInspector;
 import com.eviware.soapui.support.components.JInspectorPanel;
 import com.eviware.soapui.support.components.JInspectorPanelFactory;
@@ -196,6 +192,8 @@ public class HttpTestRequestDesktopPanel extends
     }
 
     protected void addMethodCombo(JXToolBar toolbar) {
+        MigLayout layout = new MigLayout("", "[]", "[][]");
+        JPanel panel = new JPanel(layout);
         methodCombo = new JComboBox(RestRequestInterface.HttpMethod.getMethods());
 
         methodCombo.setSelectedItem(getRequest().getMethod());
@@ -206,8 +204,10 @@ public class HttpTestRequestDesktopPanel extends
             }
         });
 
-        toolbar.addLabeledFixed("Method", methodCombo);
-        toolbar.addSeparator();
+        panel.add(new JLabel("Method"), "wrap");
+        panel.add(methodCombo);
+
+        toolbar.add(panel);
     }
 
     protected void addToolbarComponents(JXToolBar toolbar) {
@@ -293,6 +293,7 @@ public class HttpTestRequestDesktopPanel extends
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
         JXToolBar toolbar = UISupport.createToolbar();
+        UISupport.setPreferredHeight(toolbar, GlobalUIStyles.BIG_TOOLBAR_HEIGHT);
         addToolbarComponents(toolbar);
 
         panel.add(toolbar, BorderLayout.SOUTH);

@@ -165,8 +165,8 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
         request.addSubmitListener(this);
         request.addPropertyChangeListener(this);
 
-        add(buildToolbar(), BorderLayout.NORTH);
         add(buildContent(), BorderLayout.CENTER);
+        add(buildToolbar(), BorderLayout.NORTH);
         add(buildStatusLabel(), BorderLayout.SOUTH);
 
         //TODO: remove this when other hardcoded sizes are gone

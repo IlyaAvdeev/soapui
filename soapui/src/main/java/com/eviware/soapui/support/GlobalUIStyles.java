@@ -9,4 +9,8 @@ public interface GlobalUIStyles {
      */
     int MAIN_TOOLBAR_HEIGHT = 50;
 
+    /**
+     * Standard height for big toolbars
+     */
+    int BIG_TOOLBAR_HEIGHT = 50;
 }
