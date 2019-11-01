@@ -165,8 +165,8 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
         request.addSubmitListener(this);
         request.addPropertyChangeListener(this);
 
-        add(buildContent(), BorderLayout.CENTER);
         add(buildToolbar(), BorderLayout.NORTH);
+        add(buildContent(), BorderLayout.CENTER);
         add(buildStatusLabel(), BorderLayout.SOUTH);
 
         //TODO: remove this when other hardcoded sizes are gone
@@ -593,6 +593,7 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
     }
 
     private class ClosePanelAction extends AbstractAction {
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUI.getDesktop().closeDesktopPanel(getModelItem());
         }
@@ -846,5 +847,4 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
             endpointCombo.setEnabled(true);
         }
     }
-
 }
