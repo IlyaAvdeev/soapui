@@ -16,6 +16,7 @@
 
 package com.eviware.soapui.support.components;
 
+import com.eviware.soapui.support.GlobalUIStyles;
 import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.swing.JTextComponentPopupMenu;
 
@@ -35,8 +36,6 @@ import java.awt.event.KeyEvent;
 
 /**
  * JTextArea with Undo/Redo keyboard/popup support
- *
- * @author Ole.Matzura
  */
 
 public class JUndoableTextField extends JTextField implements Undoable, UndoableEditListener, FocusListener {
@@ -61,7 +60,7 @@ public class JUndoableTextField extends JTextField implements Undoable, Undoable
         getDocument().addUndoableEditListener(this);
         addFocusListener(this);
 
-        setMinimumSize(new Dimension(50, 50));
+        setMinimumSize(new Dimension(50, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT));
         addKeyListener(new KeyAdapter() {
 
             public void keyPressed(KeyEvent e) {
@@ -132,7 +131,7 @@ public class JUndoableTextField extends JTextField implements Undoable, Undoable
     }
 
     public void focusLost(FocusEvent fe) {
-        // removeUndoMananger();
+        // removeUndoManager();
     }
 
     public void undoableEditHappened(UndoableEditEvent e) {

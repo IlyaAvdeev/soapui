@@ -13,4 +13,9 @@ public interface GlobalUIStyles {
      * Standard height for big toolbars
      */
     int BIG_TOOLBAR_HEIGHT = 50;
+
+    /**
+     * DPI unaware standard text box height
+     */
+    int TEXT_BOX_STANDARD_HEIGHT = 23;
 }
