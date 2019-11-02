@@ -49,13 +49,22 @@ public class HttpUtils {
         return null;
     }
 
+    /**
+     * Null safe method normalizes the target endpoint by checking if input endpoint starts with protocol or property
+     * expansion.
+     * @param endpoint - some URL which represents the target
+     * @return 1. the original endpoint if endpoint starts with "http://" or "https://" or "$" or null or empty string.
+     * 2. normalized endpoint (http://endpoint) if endpoint DOESN'T with protocol.
+     */
     public static String completeUrlWithHttpIfProtocolIsNotHttpOrHttpsOrPropertyExpansion(String endpoint) {
         if (StringUtils.isNullOrEmpty(endpoint)) {
             return endpoint;
         }
         endpoint = endpoint.trim();
         String lowerCaseEndpoint = endpoint.toLowerCase();
-        if (!lowerCaseEndpoint.startsWith("http://") && !lowerCaseEndpoint.startsWith("https://") && !endpoint.startsWith("$")) {
+        if (!lowerCaseEndpoint.startsWith("http://") &&
+                !lowerCaseEndpoint.startsWith("https://") &&
+                !endpoint.startsWith("$")) {
             return "http://" + endpoint;
         }
 
