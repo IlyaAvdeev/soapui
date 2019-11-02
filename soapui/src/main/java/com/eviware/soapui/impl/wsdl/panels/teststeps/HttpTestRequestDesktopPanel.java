@@ -52,6 +52,7 @@ import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.log.JLogList;
 import net.miginfocom.swing.MigLayout;
 
+import javax.annotation.Nonnull;
 import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.BorderLayout;
@@ -191,7 +192,7 @@ public class HttpTestRequestDesktopPanel extends
         }
     }
 
-    protected void addMethodCombo(JXToolBar toolbar) {
+    protected void addMethodCombo(@Nonnull JPanel toolbar) {
         MigLayout layout = new MigLayout("", "[]", "[][]");
         JPanel panel = new JPanel(layout);
         methodCombo = new JComboBox(RestRequestInterface.HttpMethod.getMethods());
@@ -210,7 +211,7 @@ public class HttpTestRequestDesktopPanel extends
         toolbar.add(panel);
     }
 
-    protected void addToolbarComponents(JXToolBar toolbar) {
+    protected void addToolbarComponents(@Nonnull JPanel toolbar) {
         addMethodCombo(toolbar);
 
         toolbar.add(createPathField());
@@ -266,7 +267,7 @@ public class HttpTestRequestDesktopPanel extends
         return panel;
     }
 
-    private void addCheckBox(JXToolBar toolbar) {
+    private void addCheckBox(@Nonnull JPanel toolbar) {
         MigLayout layout = new MigLayout("", "[][]", "[]");
         JPanel panel = new JPanel(layout);
         downloadResources = new JCheckBox();
@@ -303,11 +304,10 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JXToolBar toolbar = UISupport.createToolbar();
-        UISupport.setPreferredHeight(toolbar, GlobalUIStyles.BIG_TOOLBAR_HEIGHT);
-        addToolbarComponents(toolbar);
+        JPanel lowerToolbar = new JPanel(new MigLayout("debug", "[][][]", "[]"));
+        addToolbarComponents(lowerToolbar);
 
-        panel.add(toolbar, BorderLayout.CENTER);
+        panel.add(lowerToolbar);
         return panel;
 
     }
