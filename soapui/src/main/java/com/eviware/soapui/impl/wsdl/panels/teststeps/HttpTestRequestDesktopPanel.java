@@ -214,17 +214,17 @@ public class HttpTestRequestDesktopPanel extends
     protected void addToolbarComponents(@Nonnull JPanel toolbar) {
         addMethodCombo(toolbar);
 
-        toolbar.add(createPathField());
+        toolbar.add(createPathPanel());
 
         addCheckBox(toolbar);
     }
 
-    private JComponent createPathField () {
+    private JComponent createPathPanel() {
         MigLayout layout = new MigLayout("", "[]", "[][]");
         JPanel panel = new JPanel(layout);
 
         pathTextField = new JUndoableTextField();
-        pathTextField.setPreferredSize(new Dimension(300, 20));
+        pathTextField.setPreferredSize(new Dimension(300, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT));
         pathTextField.setText(getRequest().getEndpoint());
         pathTextField.setToolTipText(pathTextField.getText());
         pathTextField.getDocument().addDocumentListener(new DocumentListenerAdapter() {
@@ -256,21 +256,15 @@ public class HttpTestRequestDesktopPanel extends
                 }
             }
         });
-        JPanel pathPanel = new JPanel(new BorderLayout(0, 0));
-        pathPanel.add(getLockIcon(), BorderLayout.WEST);
-        pathPanel.add(pathTextField, BorderLayout.CENTER);
-
 
         panel.add(new JLabel("Request URL"), "wrap");
-        panel.add(pathPanel);
+        panel.add(pathTextField);
 
         return panel;
     }
 
     private void addCheckBox(@Nonnull JPanel toolbar) {
-        MigLayout layout = new MigLayout("", "[][]", "[]");
-        JPanel panel = new JPanel(layout);
-        downloadResources = new JCheckBox();
+        downloadResources = new JCheckBox("Download Resources");
         try {
             downloadResources.setSelected(((HttpRequest) getModelItem().getHttpRequest())
                     .getDownloadIncludedResources());
@@ -292,9 +286,7 @@ public class HttpTestRequestDesktopPanel extends
                 }
             }
         });
-        panel.add(downloadResources);
-        panel.add(new JLabel("Download Resources"));
-        toolbar.add(panel);
+        toolbar.add(downloadResources);
     }
 
     @Override
@@ -304,12 +296,11 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JPanel lowerToolbar = new JPanel(new MigLayout("debug", "[][][]", "[]"));
+        JPanel lowerToolbar = new JPanel(new MigLayout("", "[][][]", "[]"));
         addToolbarComponents(lowerToolbar);
 
         panel.add(lowerToolbar);
         return panel;
-
     }
 
     @Override

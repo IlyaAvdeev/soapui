@@ -25,6 +25,7 @@ import com.eviware.soapui.impl.support.panels.AbstractHttpXmlRequestDesktopPanel
 import com.eviware.soapui.impl.support.panels.AbstractHttpXmlRequestDesktopPanel.HttpRequestMessageEditor;
 import com.eviware.soapui.model.iface.Request;
 import com.eviware.soapui.support.DocumentListenerAdapter;
+import com.eviware.soapui.support.GlobalUIStyles;
 import com.eviware.soapui.support.MediaTypeComboBox;
 import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.components.JXToolBar;
@@ -32,17 +33,11 @@ import com.eviware.soapui.support.editor.views.AbstractXmlEditorView;
 import com.eviware.soapui.support.propertyexpansion.PropertyExpansionPopupListener;
 import com.eviware.soapui.support.xml.SyntaxEditorUtil;
 import com.eviware.soapui.support.xml.XmlUtils;
+import net.miginfocom.swing.MigLayout;
 import net.sf.json.JSON;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -175,19 +170,17 @@ public class HttpRequestContentView extends AbstractXmlEditorView<HttpRequestDoc
     }
 
     protected Component buildToolbar() {
-        JXToolBar toolbar = UISupport.createToolbar();
+        MigLayout layout = new MigLayout("", "[][]", "[]");
+        JPanel toolbar = new JPanel(layout);
 
         addMediaTypeCombo(toolbar);
-        toolbar.addSeparator();
 
         addPostQueryCheckBox(toolbar);
-
-        toolbar.setMinimumSize(new Dimension(50, 20));
 
         return toolbar;
     }
 
-    protected void addPostQueryCheckBox(JXToolBar toolbar) {
+    protected void addPostQueryCheckBox(JPanel toolbar) {
         postQueryCheckBox = new JCheckBox("Post QueryString", httpRequest.isPostQueryString());
         postQueryCheckBox.setToolTipText("Controls if Query-parameters should be put in message body");
         postQueryCheckBox.setOpaque(false);
@@ -201,7 +194,8 @@ public class HttpRequestContentView extends AbstractXmlEditorView<HttpRequestDoc
         toolbar.add(postQueryCheckBox);
     }
 
-    protected void addMediaTypeCombo(JXToolBar toolbar) {
+    protected void addMediaTypeCombo(JPanel toolbar) {
+        JPanel panel = new JPanel(new MigLayout("", "[][]","[]"));
         mediaTypeCombo = new MediaTypeComboBox(httpRequest);
         mediaTypeCombo.addItemListener(new ItemListener() {
             @Override
@@ -210,7 +204,9 @@ public class HttpRequestContentView extends AbstractXmlEditorView<HttpRequestDoc
             }
         });
         mediaTypeCombo.setEnabled(httpRequest.hasRequestBody());
-        toolbar.addLabeledFixed("Media Type", mediaTypeCombo);
+        panel.add(new JLabel("Media Type"));
+        panel.add(mediaTypeCombo);
+        toolbar.add(panel);
     }
 
     protected Object[] getRequestMediaTypes() {

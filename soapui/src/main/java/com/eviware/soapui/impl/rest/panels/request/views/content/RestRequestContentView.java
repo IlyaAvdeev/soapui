@@ -29,11 +29,10 @@ import com.eviware.soapui.support.UISupport;
 import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.types.StringList;
 import com.eviware.soapui.support.types.TupleList;
+import net.miginfocom.swing.MigLayout;
 import org.apache.xmlbeans.SchemaType;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -71,16 +70,14 @@ public class RestRequestContentView extends HttpRequestContentView {
     }
 
     protected Component buildToolbar() {
-        JXToolBar toolbar = UISupport.createToolbar();
+        MigLayout layout = new MigLayout("", "[][][]", "[]");
+        JPanel toolbar = new JPanel(layout);
 
         addMediaTypeCombo(toolbar);
-        toolbar.addSeparator();
 
         recreateButton = UISupport.createActionButton(new CreateDefaultRepresentationAction(), true);
         recreateButton.setEnabled(canRecreate());
-        toolbar.addFixed(recreateButton);
-
-        toolbar.addSeparator();
+        toolbar.add(recreateButton);
 
         addPostQueryCheckBox(toolbar);
 
