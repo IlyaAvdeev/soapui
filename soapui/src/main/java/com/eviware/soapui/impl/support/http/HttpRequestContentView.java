@@ -170,7 +170,7 @@ public class HttpRequestContentView extends AbstractXmlEditorView<HttpRequestDoc
     }
 
     protected Component buildToolbar() {
-        MigLayout layout = new MigLayout("", "[][]", "[]");
+        MigLayout layout = new MigLayout("", "[][]", "0[]0");
         JPanel toolbar = new JPanel(layout);
 
         addMediaTypeCombo(toolbar);
