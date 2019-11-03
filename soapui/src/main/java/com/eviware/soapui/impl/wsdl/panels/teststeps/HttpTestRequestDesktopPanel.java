@@ -299,7 +299,7 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JPanel lowerToolbar = new JPanel(new MigLayout("debug", "0[][grow][]0", "0[]0"));
+        JPanel lowerToolbar = new JPanel(new MigLayout("", "0[][grow][]0", "0[]0"));
         addToolbarComponents(lowerToolbar);
 
         panel.add(lowerToolbar);
