@@ -214,17 +214,18 @@ public class HttpTestRequestDesktopPanel extends
     protected void addToolbarComponents(@Nonnull JPanel toolbar) {
         addMethodCombo(toolbar);
 
-        toolbar.add(createPathPanel());
+        toolbar.add(createPathPanel(), "growx");
 
         addCheckBox(toolbar);
     }
 
     private JComponent createPathPanel() {
-        MigLayout layout = new MigLayout("", "[]", "[][]");
+        MigLayout layout = new MigLayout("", "[grow]", "[][]");
         JPanel panel = new JPanel(layout);
 
         pathTextField = new JUndoableTextField();
-        pathTextField.setPreferredSize(new Dimension(300, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT));
+        UISupport.setPreferredHeight(pathTextField, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT);
+        //pathTextField.setPreferredSize(new Dimension(300, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT));
         pathTextField.setText(getRequest().getEndpoint());
         pathTextField.setToolTipText(pathTextField.getText());
         pathTextField.getDocument().addDocumentListener(new DocumentListenerAdapter() {
@@ -258,7 +259,7 @@ public class HttpTestRequestDesktopPanel extends
         });
 
         panel.add(new JLabel("Request URL"), "wrap");
-        panel.add(pathTextField);
+        panel.add(pathTextField, "growx");
 
         return panel;
     }
@@ -271,7 +272,7 @@ public class HttpTestRequestDesktopPanel extends
         } catch (Exception cce) {
             SoapUI.logError(cce);
         }
-        downloadResources.setPreferredSize(new Dimension(17, 17));
+        //downloadResources.setPreferredSize(new Dimension(17, 17));
         downloadResources.setToolTipText("Download all included resources as attachments");
         downloadResources.addActionListener(new ActionListener() {
             @Override
@@ -296,7 +297,7 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JPanel lowerToolbar = new JPanel(new MigLayout("", "[][][]", "0[]0"));
+        JPanel lowerToolbar = new JPanel(new MigLayout("", "0[][grow][]0", "0[]0"));
         addToolbarComponents(lowerToolbar);
 
         panel.add(lowerToolbar);
