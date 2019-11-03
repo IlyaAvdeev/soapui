@@ -265,6 +265,7 @@ public class HttpTestRequestDesktopPanel extends
     }
 
     private void addCheckBox(@Nonnull JPanel toolbar) {
+        JPanel panel = new JPanel(new BorderLayout());
         downloadResources = new JCheckBox("Download Resources");
         try {
             downloadResources.setSelected(((HttpRequest) getModelItem().getHttpRequest())
@@ -287,7 +288,8 @@ public class HttpTestRequestDesktopPanel extends
                 }
             }
         });
-        toolbar.add(downloadResources);
+        panel.add(downloadResources, BorderLayout.SOUTH);
+        toolbar.add(panel, "grow");
     }
 
     @Override
@@ -297,7 +299,7 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JPanel lowerToolbar = new JPanel(new MigLayout("", "0[][grow][]0", "0[]0"));
+        JPanel lowerToolbar = new JPanel(new MigLayout("debug", "0[][grow][]0", "0[]0"));
         addToolbarComponents(lowerToolbar);
 
         panel.add(lowerToolbar);
