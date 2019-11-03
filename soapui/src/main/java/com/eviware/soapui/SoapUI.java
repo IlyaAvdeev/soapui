@@ -749,6 +749,7 @@ public class SoapUI {
             this.arg = arg;
         }
 
+        @Override
         public void run() {
             SoapUIAction<ModelItem> action = getActionRegistry().getAction(NewWsdlProjectAction.SOAPUI_ACTION_ID);
             if (action != null) {
@@ -764,6 +765,7 @@ public class SoapUI {
             this.arg = arg;
         }
 
+        @Override
         public void run() {
             try {
                 WsdlProject project = (WsdlProject) getWorkspace().createProject(arg.getHost(), null);
@@ -805,7 +807,7 @@ public class SoapUI {
                 // Preserve interrupt status
                 Thread.currentThread().interrupt();
             }
-            System.out.println("exiting..");
+            System.out.println("exiting...");
             SoapUI.getSoapUITimer().cancel();
             System.exit(0);
         }
@@ -1047,7 +1049,7 @@ public class SoapUI {
                 question += "\n(Projects with running tests will not be saved)";
             }
 
-            if (!UISupport.confirm(question, "Question")) {
+            if (!UISupport.confirm(question, "SoapUI")) {
                 return false;
             }
 
@@ -1061,7 +1063,7 @@ public class SoapUI {
                 SoapUI.logError(e1);
             }
         } else {
-            if (!UISupport.confirm("Exit SoapUI without saving?", "Question")) {
+            if (!UISupport.confirm("Exit SoapUI without saving?", "SoapUI")) {
                 saveOnExit = true;
                 return false;
             }
@@ -1193,7 +1195,7 @@ public class SoapUI {
     private class ExitAction extends AbstractAction {
         public ExitAction() {
             super("Exit");
-            putValue(Action.SHORT_DESCRIPTION, "Saves all projects and exits SoapUI");
+            putValue(Action.SHORT_DESCRIPTION, "Save all projects and exit SoapUI");
             putValue(Action.ACCELERATOR_KEY, UISupport.getKeyStroke("menu Q"));
         }
 
@@ -1506,6 +1508,7 @@ public class SoapUI {
             putValue(Action.NAME, "Open");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUI.getActionRegistry().getAction(ImportWsdlProjectAction.SOAPUI_ACTION_ID).perform(workspace, null);
         }
@@ -1518,6 +1521,7 @@ public class SoapUI {
             putValue(Action.NAME, "Save All");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUI.getActionRegistry().getAction(SaveAllProjectsAction.SOAPUI_ACTION_ID).perform(workspace, null);
         }
@@ -1530,6 +1534,7 @@ public class SoapUI {
             putValue(Action.NAME, "Preferences");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUIPreferencesAction.getInstance().actionPerformed(null);
         }
@@ -1543,6 +1548,7 @@ public class SoapUI {
             putValue(Action.SHORT_DESCRIPTION, "Imports SoapUI Settings from another settings-file");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             try {
                 // prompt for import
