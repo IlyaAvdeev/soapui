@@ -151,7 +151,7 @@ public class HttpTestRequestDesktopPanel extends
         assertionsPanel = buildAssertionsPanel();
 
         assertionInspector = new JComponentInspector<JComponent>(assertionsPanel, "Assertions ("
-                + getModelItem().getAssertionCount() + ")", "Assertions for this Request", true);
+                + getModelItem().getAssertionCount() + ")", "Assertions for this request", true);
 
         inspectorPanel.addInspector(assertionInspector);
 

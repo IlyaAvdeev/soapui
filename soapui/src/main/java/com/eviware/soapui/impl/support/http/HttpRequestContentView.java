@@ -181,8 +181,8 @@ public class HttpRequestContentView extends AbstractXmlEditorView<HttpRequestDoc
     }
 
     protected void addPostQueryCheckBox(JPanel toolbar) {
-        postQueryCheckBox = new JCheckBox("Post QueryString", httpRequest.isPostQueryString());
-        postQueryCheckBox.setToolTipText("Controls if Query-parameters should be put in message body");
+        postQueryCheckBox = new JCheckBox("Post Query String", httpRequest.isPostQueryString());
+        postQueryCheckBox.setToolTipText("Activate this option if query parameters should be put in message body");
         postQueryCheckBox.setOpaque(false);
         postQueryCheckBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {

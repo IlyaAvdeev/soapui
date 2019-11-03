@@ -568,10 +568,11 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
     public class SubmitAction extends AbstractAction {
         public SubmitAction() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/submit_request.gif"));
-            putValue(Action.SHORT_DESCRIPTION, "Submit request to specified endpoint URL (Alt-Enter)");
+            putValue(Action.SHORT_DESCRIPTION, "Send request to the specified request URL (Alt-Enter)");
             putValue(Action.ACCELERATOR_KEY, UISupport.getKeyStroke("alt ENTER"));
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             onSubmit();
         }
@@ -583,10 +584,11 @@ public abstract class AbstractHttpRequestDesktopPanel<T extends ModelItem, T2 ex
         public CancelAction() {
             super();
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/cancel_request.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Aborts ongoing request");
+            putValue(Action.SHORT_DESCRIPTION, "Abort ongoing request");
             putValue(Action.ACCELERATOR_KEY, UISupport.getKeyStroke("alt X"));
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             onCancel();
         }

@@ -215,11 +215,11 @@ public class PropertyHolderTable extends JPanel {
         if (holder instanceof MutableTestPropertyHolder) {
             removePropertyAction = new RemovePropertyAction();
             MutableTestPropertyHolder mutablePropertyHolder = (MutableTestPropertyHolder) holder;
-            addPropertyAction = new AddParamAction(propertiesTable, mutablePropertyHolder, "Adds a property to the property list");
+            addPropertyAction = new AddParamAction(propertiesTable, mutablePropertyHolder, "Add a property to the property list");
             movePropertyUpAction = new MovePropertyUpAction(propertiesTable, mutablePropertyHolder,
-                    "Moves selected property up one row");
+                    "Move selected property up");
             movePropertyDownAction = new MovePropertyDownAction(propertiesTable, mutablePropertyHolder,
-                    "Moves selected property down one row");
+                    "Move selected property down");
 
             JButton addPropertyButton = UISupport.createToolbarButton(addPropertyAction);
             toolbar.add(addPropertyButton);
