@@ -34,10 +34,7 @@ import java.beans.PropertyChangeListener;
 
 /**
  * Delegates a SwingAction to a SoapUIActionMapping
- *
- * @author ole.matzura
  */
-
 public class SwingActionDelegate<T extends ModelItem> extends AbstractAction implements PropertyChangeListener,
         SoapUIActionMarker {
     private final T target;

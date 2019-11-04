@@ -69,11 +69,7 @@ import com.eviware.soapui.monitor.TestMonitor;
 import com.eviware.soapui.settings.ProxySettings;
 import com.eviware.soapui.settings.UISettings;
 import com.eviware.soapui.settings.VersionUpdateSettings;
-import com.eviware.soapui.support.DefaultHyperlinkListener;
-import com.eviware.soapui.support.SoapUIException;
-import com.eviware.soapui.support.StringUtils;
-import com.eviware.soapui.support.Tools;
-import com.eviware.soapui.support.UISupport;
+import com.eviware.soapui.support.*;
 import com.eviware.soapui.support.action.SoapUIAction;
 import com.eviware.soapui.support.action.SoapUIActionRegistry;
 import com.eviware.soapui.support.action.swing.ActionList;
@@ -349,7 +345,7 @@ public class SoapUI {
 
     private JComponent buildToolbar() {
         mainToolbar = new JXToolBar();
-        UISupport.setPreferredHeight(mainToolbar, JXToolBar.MAIN_COMPONENT_HEIGHT);
+        UISupport.setPreferredHeight(mainToolbar, GlobalUIStyles.MAIN_TOOLBAR_HEIGHT);
         mainToolbar.setFloatable(false);
         mainToolbar.setRollover(true);
         mainToolbar.putClientProperty(Options.HEADER_STYLE_KEY, HeaderStyle.BOTH);
@@ -366,6 +362,11 @@ public class SoapUI {
 
         mainToolbar.addGlue();
         searchField = new JTextField(20) {
+            @Override
+            public Dimension getPreferredSize() {
+                return UISupport.getScaledDimension(super.getPreferredSize());
+            }
+
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -748,6 +749,7 @@ public class SoapUI {
             this.arg = arg;
         }
 
+        @Override
         public void run() {
             SoapUIAction<ModelItem> action = getActionRegistry().getAction(NewWsdlProjectAction.SOAPUI_ACTION_ID);
             if (action != null) {
@@ -763,6 +765,7 @@ public class SoapUI {
             this.arg = arg;
         }
 
+        @Override
         public void run() {
             try {
                 WsdlProject project = (WsdlProject) getWorkspace().createProject(arg.getHost(), null);
@@ -804,7 +807,7 @@ public class SoapUI {
                 // Preserve interrupt status
                 Thread.currentThread().interrupt();
             }
-            System.out.println("exiting..");
+            System.out.println("exiting...");
             SoapUI.getSoapUITimer().cancel();
             System.exit(0);
         }
@@ -1046,7 +1049,7 @@ public class SoapUI {
                 question += "\n(Projects with running tests will not be saved)";
             }
 
-            if (!UISupport.confirm(question, "Question")) {
+            if (!UISupport.confirm(question, "SoapUI")) {
                 return false;
             }
 
@@ -1060,7 +1063,7 @@ public class SoapUI {
                 SoapUI.logError(e1);
             }
         } else {
-            if (!UISupport.confirm("Exit SoapUI without saving?", "Question")) {
+            if (!UISupport.confirm("Exit SoapUI without saving?", "SoapUI")) {
                 saveOnExit = true;
                 return false;
             }
@@ -1192,7 +1195,7 @@ public class SoapUI {
     private class ExitAction extends AbstractAction {
         public ExitAction() {
             super("Exit");
-            putValue(Action.SHORT_DESCRIPTION, "Saves all projects and exits SoapUI");
+            putValue(Action.SHORT_DESCRIPTION, "Save all projects and exit SoapUI");
             putValue(Action.ACCELERATOR_KEY, UISupport.getKeyStroke("menu Q"));
         }
 
@@ -1505,6 +1508,7 @@ public class SoapUI {
             putValue(Action.NAME, "Open");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUI.getActionRegistry().getAction(ImportWsdlProjectAction.SOAPUI_ACTION_ID).perform(workspace, null);
         }
@@ -1517,6 +1521,7 @@ public class SoapUI {
             putValue(Action.NAME, "Save All");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUI.getActionRegistry().getAction(SaveAllProjectsAction.SOAPUI_ACTION_ID).perform(workspace, null);
         }
@@ -1529,6 +1534,7 @@ public class SoapUI {
             putValue(Action.NAME, "Preferences");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             SoapUIPreferencesAction.getInstance().actionPerformed(null);
         }
@@ -1542,6 +1548,7 @@ public class SoapUI {
             putValue(Action.SHORT_DESCRIPTION, "Imports SoapUI Settings from another settings-file");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             try {
                 // prompt for import

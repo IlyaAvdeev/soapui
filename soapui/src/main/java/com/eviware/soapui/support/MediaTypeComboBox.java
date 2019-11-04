@@ -25,7 +25,6 @@ import java.awt.event.ItemListener;
 public class MediaTypeComboBox extends JComboBox {
     public MediaTypeComboBox(final MediaType model) {
         super(getMediaTypes());
-
         setEditable(true);
         if (model.getMediaType() != null) {
             setSelectedItem(model.getMediaType());

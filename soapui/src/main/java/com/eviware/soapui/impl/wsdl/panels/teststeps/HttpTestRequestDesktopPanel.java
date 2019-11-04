@@ -43,25 +43,17 @@ import com.eviware.soapui.model.testsuite.TestAssertion;
 import com.eviware.soapui.model.testsuite.TestCaseRunner;
 import com.eviware.soapui.monitor.support.TestMonitorListenerAdapter;
 import com.eviware.soapui.security.SecurityTestRunner;
-import com.eviware.soapui.support.DateUtil;
-import com.eviware.soapui.support.DocumentListenerAdapter;
-import com.eviware.soapui.support.ListDataChangeListener;
-import com.eviware.soapui.support.StringUtils;
-import com.eviware.soapui.support.UISupport;
+import com.eviware.soapui.support.*;
 import com.eviware.soapui.support.components.JComponentInspector;
 import com.eviware.soapui.support.components.JInspectorPanel;
 import com.eviware.soapui.support.components.JInspectorPanelFactory;
 import com.eviware.soapui.support.components.JUndoableTextField;
 import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.log.JLogList;
+import net.miginfocom.swing.MigLayout;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListModel;
-import javax.swing.SwingUtilities;
+import javax.annotation.Nonnull;
+import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -76,20 +68,31 @@ import java.util.Date;
 
 public class HttpTestRequestDesktopPanel extends
         AbstractHttpXmlRequestDesktopPanel<HttpTestRequestStepInterface, HttpTestRequestInterface<?>> {
-    private JLogList logArea;
-    private InternalTestMonitorListener testMonitorListener = new InternalTestMonitorListener();
-    private JButton addAssertionButton;
-    protected boolean updatingRequest;
-    private AssertionsPanel assertionsPanel;
-    private JInspectorPanel inspectorPanel;
-    private JComponentInspector<?> assertionInspector;
-    private JComponentInspector<?> logInspector;
-    private InternalAssertionsListener assertionsListener = new InternalAssertionsListener();
-    private long startTime;
-    private boolean updating;
+
+    //The definition of the controls is placed in the order of appearance on the screen
+    //from top to bottom sequentially
+
+    //top bar
+    private JComboBox methodCombo;
     private JUndoableTextField pathTextField;
     private JCheckBox downloadResources;
-    private JComboBox methodCombo;
+
+    //middle
+    private JInspectorPanel inspectorPanel;
+
+    //bottom panel (Assertion)
+    private JButton addAssertionButton;
+    private JComponentInspector<?> assertionInspector;
+    private AssertionsPanel assertionsPanel;
+    //bottom panel (Log area)
+    private JLogList logArea;
+    private JComponentInspector<?> logInspector;
+
+    private InternalTestMonitorListener testMonitorListener = new InternalTestMonitorListener();
+    private InternalAssertionsListener assertionsListener = new InternalAssertionsListener();
+
+    private long startTime;
+    private boolean updating;
 
     public HttpTestRequestDesktopPanel(HttpTestRequestStepInterface testStep) {
         super(testStep, testStep.getTestRequest());
@@ -148,7 +151,7 @@ public class HttpTestRequestDesktopPanel extends
         assertionsPanel = buildAssertionsPanel();
 
         assertionInspector = new JComponentInspector<JComponent>(assertionsPanel, "Assertions ("
-                + getModelItem().getAssertionCount() + ")", "Assertions for this Request", true);
+                + getModelItem().getAssertionCount() + ")", "Assertions for this request", true);
 
         inspectorPanel.addInspector(assertionInspector);
 
@@ -189,29 +192,40 @@ public class HttpTestRequestDesktopPanel extends
         }
     }
 
-    protected void addMethodCombo(JXToolBar toolbar) {
+    protected void addMethodCombo(@Nonnull JPanel toolbar) {
+        MigLayout layout = new MigLayout("", "[]", "[][]");
+        JPanel panel = new JPanel(layout);
         methodCombo = new JComboBox(RestRequestInterface.HttpMethod.getMethods());
 
         methodCombo.setSelectedItem(getRequest().getMethod());
-        methodCombo.setToolTipText("Set desired HTTP method");
+        methodCombo.setToolTipText("Select HTTP method");
         methodCombo.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                updatingRequest = true;
                 getRequest().setMethod((RestRequestInterface.HttpMethod) methodCombo.getSelectedItem());
-                updatingRequest = false;
             }
         });
 
-        toolbar.addLabeledFixed("Method", methodCombo);
-        toolbar.addSeparator();
+        panel.add(new JLabel("Method"), "wrap");
+        panel.add(methodCombo);
+
+        toolbar.add(panel);
     }
 
-    protected void addToolbarComponents(JXToolBar toolbar) {
-        toolbar.addSeparator();
+    protected void addToolbarComponents(@Nonnull JPanel toolbar) {
         addMethodCombo(toolbar);
 
+        toolbar.add(createPathPanel(), "growx");
+
+        addCheckBox(toolbar);
+    }
+
+    private JComponent createPathPanel() {
+        MigLayout layout = new MigLayout("", "[grow]", "[][]");
+        JPanel panel = new JPanel(layout);
+
         pathTextField = new JUndoableTextField();
-        pathTextField.setPreferredSize(new Dimension(300, 20));
+        UISupport.setPreferredHeight(pathTextField, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT);
+        //pathTextField.setPreferredSize(new Dimension(300, GlobalUIStyles.TEXT_BOX_STANDARD_HEIGHT));
         pathTextField.setText(getRequest().getEndpoint());
         pathTextField.setToolTipText(pathTextField.getText());
         pathTextField.getDocument().addDocumentListener(new DocumentListenerAdapter() {
@@ -231,7 +245,6 @@ public class HttpTestRequestDesktopPanel extends
                         }
                     });
                 }
-
                 updating = false;
             }
         });
@@ -244,26 +257,26 @@ public class HttpTestRequestDesktopPanel extends
                 }
             }
         });
-        JPanel pathPanel = new JPanel(new BorderLayout(0, 0));
-        pathPanel.add(getLockIcon(), BorderLayout.WEST);
-        pathPanel.add(pathTextField, BorderLayout.CENTER);
-        toolbar.addLabeledFixed("Request URL:", pathPanel);
 
-        toolbar.addSeparator();
-        addCheckBox(toolbar);
+        panel.add(new JLabel("Request URL"), "wrap");
+        panel.add(pathTextField, "growx");
+
+        return panel;
     }
 
-    private void addCheckBox(JXToolBar toolbar) {
-        downloadResources = new JCheckBox();
+    private void addCheckBox(@Nonnull JPanel toolbar) {
+        JPanel panel = new JPanel(new MigLayout("", "[]", "[]"));
+        downloadResources = new JCheckBox("Download Resources");
         try {
             downloadResources.setSelected(((HttpRequest) getModelItem().getHttpRequest())
                     .getDownloadIncludedResources());
         } catch (Exception cce) {
             SoapUI.logError(cce);
         }
-        downloadResources.setPreferredSize(new Dimension(17, 17));
-        downloadResources.setToolTipText("Download all included resources as attachments!");
+        //downloadResources.setPreferredSize(new Dimension(17, 17));
+        downloadResources.setToolTipText("Download all included resources as attachments");
         downloadResources.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (1001 == e.getID() && getModelItem() instanceof HttpTestRequestStep) {
@@ -273,12 +286,10 @@ public class HttpTestRequestDesktopPanel extends
                 } catch (Exception cce) {
                     SoapUI.logError(cce);
                 }
-
             }
         });
-        toolbar.addLabeledFixed("Download Resources", downloadResources);
-
-        toolbar.addSeparator();
+        panel.add(downloadResources);
+        toolbar.add(panel);
     }
 
     @Override
@@ -288,12 +299,11 @@ public class HttpTestRequestDesktopPanel extends
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(super.buildToolbar(), BorderLayout.NORTH);
 
-        JXToolBar toolbar = UISupport.createToolbar();
-        addToolbarComponents(toolbar);
+        JPanel lowerToolbar = new JPanel(new MigLayout("", "0[][grow][]0", "0[]0"));
+        addToolbarComponents(lowerToolbar);
 
-        panel.add(toolbar, BorderLayout.SOUTH);
+        panel.add(lowerToolbar);
         return panel;
-
     }
 
     @Override
@@ -443,5 +453,4 @@ public class HttpTestRequestDesktopPanel extends
         }
         super.propertyChange(evt);
     }
-
 }

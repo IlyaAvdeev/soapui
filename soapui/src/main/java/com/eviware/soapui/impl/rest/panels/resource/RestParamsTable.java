@@ -244,8 +244,8 @@ public class RestParamsTable extends JPanel {
     }
 
     private void initEditableButtons() {
-        addParamAction = new AddParamAction(paramsTable, params, "Adds a parameter to the parameter table");
-        removeParamAction = new RemovePropertyAction(paramsTable, params, "Removes the selected parameter");
+        addParamAction = new AddParamAction(paramsTable, params, "Add a parameter to the parameter table");
+        removeParamAction = new RemovePropertyAction(paramsTable, params, "Remove the selected parameter");
         updateParamsAction = new UpdateParamsAction();
 
     }
@@ -368,11 +368,12 @@ public class RestParamsTable extends JPanel {
     private class UpdateParamsAction extends AbstractAction {
         private UpdateParamsAction() {
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/update-request-parameters-from-url.png"));
-            putValue(Action.SHORT_DESCRIPTION, "Updates params from a specified URL");
+            putValue(Action.SHORT_DESCRIPTION, "Extract params from a specified URL");
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
-            String str = UISupport.prompt("Enter new url below", "Extract Params", "");
+            String str = UISupport.prompt("Enter desired URL", "Extract Params", "");
             if (str == null) {
                 return;
             }
@@ -392,7 +393,7 @@ public class RestParamsTable extends JPanel {
         public UseDefaultParamsAction() {
             super(REVERT_PARAMETER_VALUES);
             putValue(Action.SMALL_ICON, UISupport.createImageIcon("/default_properties.gif"));
-            putValue(Action.SHORT_DESCRIPTION, "Reverts all current parameters to default values");
+            putValue(Action.SHORT_DESCRIPTION, "Revert all current parameters to default values");
             setEnabled(false);
         }
 

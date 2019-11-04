@@ -33,7 +33,6 @@ import java.awt.Graphics;
 public class JXToolBar extends JToolBar {
 
     public static final int STANDARD_COMPONENT_HEIGHT = 18;
-    public static final int MAIN_COMPONENT_HEIGHT = 50;
 
     @Override
     public void paintComponent(Graphics g) {
