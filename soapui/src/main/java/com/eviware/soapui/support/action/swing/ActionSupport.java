@@ -29,10 +29,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * ActionList-related utilities
- *
- * @author Ole.Matzura
  */
-
 public class ActionSupport {
     public static JPopupMenu buildPopup(ActionList actions) {
         if (actions == null || actions.getActionCount() == 0) {

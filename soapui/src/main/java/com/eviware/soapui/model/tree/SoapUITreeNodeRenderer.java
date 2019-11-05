@@ -30,10 +30,7 @@ import java.awt.Component;
 
 /**
  * TreeCellRenderer for SoapUITreeNodes
- *
- * @author Ole.Matzura
  */
-
 public class SoapUITreeNodeRenderer extends DefaultTreeCellRenderer {
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
                                                   boolean leaf, int row, boolean hasFocus) {

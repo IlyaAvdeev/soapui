@@ -66,10 +66,7 @@ import java.util.Set;
 
 /**
  * The SoapUI navigator tree
- *
- * @author Ole.Matzura
  */
-
 public class Navigator extends JPanel {
     public static final String NAVIGATOR = "navigator";
     private Workspace workspace;
@@ -125,7 +122,7 @@ public class Navigator extends JPanel {
         private static final int AUTOSCROLL_MARGIN = 12;
 
         public void autoscroll(Point pt) {
-            // Figure out which row we�re on.
+            // Figure out which row we are on.
             int nRow = getRowForLocation(pt.x, pt.y);
 
             // If we are not on a row then ignore this autoscroll request
@@ -290,6 +287,7 @@ public class Navigator extends JPanel {
                 this.row = row;
             }
 
+            @Override
             public void actionPerformed(ActionEvent e) {
                 collapseAll(mainTree.getPathForRow(row));
                 mainTree.collapseRow(row);
@@ -320,6 +318,7 @@ public class Navigator extends JPanel {
                 this.row = row;
             }
 
+            @Override
             public void actionPerformed(ActionEvent e) {
                 mainTree.expandRow(row);
                 expandAll(mainTree.getPathForRow(row));
@@ -467,6 +466,7 @@ public class Navigator extends JPanel {
             putValue(SMALL_ICON, UISupport.createImageIcon("/properties_step.png"));
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             Enumeration<TreePath> expandedDescendants = mainTree.getExpandedDescendants(getTreePath(workspace));
             TreePath selectionPath = mainTree.getSelectionPath();

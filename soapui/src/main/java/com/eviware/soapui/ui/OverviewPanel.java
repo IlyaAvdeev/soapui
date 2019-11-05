@@ -21,9 +21,9 @@ import com.eviware.soapui.model.ModelItem;
 import javax.swing.JComponent;
 
 public interface OverviewPanel {
-    public JComponent getComponent();
+    JComponent getComponent();
 
-    public ModelItem getModelItem();
+    ModelItem getModelItem();
 
-    public void setModelItem(ModelItem modelItem);
+    void setModelItem(ModelItem modelItem);
 }

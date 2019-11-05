@@ -37,10 +37,7 @@ import java.util.List;
 
 /**
  * List for displaying current DesktopPanels
- *
- * @author Ole.Matzura
  */
-
 public class JDesktopPanelsList extends JPanel {
     private DefaultListModel desktopPanels;
     private JList desktopPanelsList;
@@ -70,6 +67,7 @@ public class JDesktopPanelsList extends JPanel {
     }
 
     private class DesktopPanelPropertyChangeListener implements PropertyChangeListener {
+        @Override
         public void propertyChange(PropertyChangeEvent evt) {
             DesktopPanel desktopPanel = (DesktopPanel) evt.getSource();
             int ix = desktopPanels.indexOf(desktopPanel);

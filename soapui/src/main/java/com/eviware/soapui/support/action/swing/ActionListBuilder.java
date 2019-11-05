@@ -31,10 +31,7 @@ import java.util.List;
 
 /**
  * Builder for ActionLists for a variety of targets
- *
- * @author ole.matzura
  */
-
 public class ActionListBuilder {
     /**
      * Builds default ActionList for specified ModelItem
@@ -51,7 +48,6 @@ public class ActionListBuilder {
     /**
      * Creates an ActionList for the specified modelItem
      */
-
     public static <T extends ModelItem> ActionList buildActions(T modelItem, String suffix) {
         Class<?> clazz = modelItem.getClass();
         ActionList actions = buildActions(clazz.getSimpleName() + suffix + "Actions", modelItem);
