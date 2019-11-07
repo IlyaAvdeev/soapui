@@ -30,10 +30,7 @@ import java.util.List;
 
 /**
  * SoapUITreeNode for Project implementations
- *
- * @author Ole.Matzura
  */
-
 public class ProjectTreeNode extends AbstractModelItemTreeNode<Project> {
     private InternalProjectListener internalProjectListener;
     private List<InterfaceTreeNode> interfaceNodes = new ArrayList<InterfaceTreeNode>();
@@ -175,7 +172,7 @@ public class ProjectTreeNode extends AbstractModelItemTreeNode<Project> {
                 getTreeModel().notifyNodeRemoved(treeNode);
                 interfaceNodes.remove(treeNode);
             } else {
-                throw new RuntimeException("Removing unkown interface");
+                throw new RuntimeException("Removing unknown interface");
             }
         }
 
@@ -191,7 +188,7 @@ public class ProjectTreeNode extends AbstractModelItemTreeNode<Project> {
                 getTreeModel().notifyNodeRemoved(treeNode);
                 testSuiteNodes.remove(treeNode);
             } else {
-                throw new RuntimeException("Removing unkown testSuite");
+                throw new RuntimeException("Removing unknown testSuite");
             }
         }
 
@@ -213,7 +210,7 @@ public class ProjectTreeNode extends AbstractModelItemTreeNode<Project> {
                 getTreeModel().notifyNodeRemoved(treeNode);
                 mockServiceNodes.remove(treeNode);
             } else {
-                throw new RuntimeException("Removing unkown mockService");
+                throw new RuntimeException("Removing unknown mockService");
             }
         }
     }

@@ -28,10 +28,7 @@ import java.util.Vector;
 
 /**
  * Base implementation of SoapUITreeNode interface
- *
- * @author Ole.Matzura
  */
-
 public abstract class AbstractTreeNode<T extends ModelItem> implements SoapUITreeNode {
     private T modelItem;
 

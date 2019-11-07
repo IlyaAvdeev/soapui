@@ -272,7 +272,6 @@ public class Navigator extends JPanel {
                     NavigatorListener[] array = listeners.toArray(new NavigatorListener[listeners.size()]);
                     for (NavigatorListener listener : array) {
                         listener.nodeSelected(newPath == null ? null : treeNode);
-
                     }
                 }
             }

@@ -21,24 +21,21 @@ import com.eviware.soapui.support.PropertyChangeNotifier;
 
 /**
  * An action for a ModelItem
- *
- * @author ole.matzura
  */
-
 public interface SoapUIAction<T extends ModelItem> extends PropertyChangeNotifier {
-    public final static String ENABLED_PROPERTY = SoapUIAction.class.getName() + "@enabled";
+    String ENABLED_PROPERTY = SoapUIAction.class.getName() + "@enabled";
 
-    public void perform(T target, Object param);
+    void perform(T target, Object param);
 
-    public String getId();
+    String getId();
 
-    public String getName();
+    String getName();
 
-    public String getDescription();
+    String getDescription();
 
-    public boolean isEnabled();
+    boolean isEnabled();
 
-    public boolean isDefault();
+    boolean isDefault();
 
-    public boolean applies(T target);
+    boolean applies(T target);
 }
