@@ -377,8 +377,6 @@
         <tns:actionMapping actionId="NewWorkspaceAction"/>
         <tns:actionMapping actionId="SwitchWorkspaceAction"/>
         <tns:actionMapping actionId="ClearWorkspaceAction"/>
-
-
     </tns:actionGroup>
 
     <!-- Project Action Groups -->
@@ -388,23 +386,17 @@
     <tns:actionGroup name="Disabled Project Actions" id="DisabledWsdlProjectActions" default="ReloadProjectAction">
         <tns:actionMapping actionId="ReloadProjectAction" keyStroke="F5"/>
         <tns:actionMapping actionId="RemoveProjectAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="Closed Project Actions" id="ClosedWsdlProjectActions" default="OpenProjectAction">
         <tns:actionMapping actionId="OpenProjectAction"/>
         <tns:actionMapping actionId="RemoveProjectAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="Encrypted Project Actions" id="EncryptedWsdlProjectActions"
                      default="OpenAndDecryptProjectAction">
         <tns:actionMapping actionId="OpenAndDecryptProjectAction"/>
         <tns:actionMapping actionId="RemoveProjectAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="Enabled Project Actions" id="EnabledWsdlProjectActions" default="ShowDesktopPanelAction">
@@ -466,8 +458,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="DotNetWsdlAction"/>
         <tns:actionMapping actionId="GSoapAction"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="Interface Actions" id="WsdlInterfaceActions" default="ShowDesktopPanelAction"
@@ -492,8 +482,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="CloneInterfaceAction" keyStroke="F9"/>
         <tns:actionMapping actionId="RemoveInterfaceAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestService ActionGroup -->
@@ -512,8 +500,6 @@
         <tns:actionMapping actionId="DeleteRestServiceAction" keyStroke="DELETE"/>
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="AddJMSEndpointAction"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlOperation ActionGroup -->
@@ -523,8 +509,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="NewRequestAction" keyStroke="menu N"/>
         <tns:actionMapping actionId="RelabelOperationAction" keyStroke="F2"/>
-
-
     </tns:actionGroup>
 
     <!-- RestResource ActionGroup -->
@@ -538,8 +522,6 @@
         <tns:actionMapping actionId="CloneRestResourceAction" keyStroke="F9" iconPath="/clone.png"/>
         <tns:actionMapping actionId="RenameRestResourceAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteRestResourceAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestMethod ActionGroup -->
@@ -552,8 +534,6 @@
         <tns:actionMapping actionId="CloneRestMethodAction" keyStroke="F9" iconPath="/clone.png"/>
         <tns:actionMapping actionId="RenameRestMethodAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteRestMethodAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlRequest ActionGroup -->
@@ -568,8 +548,6 @@
         <tns:actionMapping actionId="CloneRequestAction" keyStroke="F9" iconPath="/clone.png"/>
         <tns:actionMapping actionId="RenameRequestAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteRequestAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestRequest ActionGroup -->
@@ -585,8 +563,6 @@
         <tns:actionMapping actionId="CloneRestRequestAction" keyStroke="F9" iconPath="/clone.png"/>
         <tns:actionMapping actionId="RenameRestRequestAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteRestRequestAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlTestSuite ActionGroup -->
@@ -609,8 +585,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="ExportTestSuite"/>
         <tns:actionMapping actionId="ImportTestCase"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlTestCase ActionGroup -->
@@ -641,28 +615,20 @@
         <tns:actionMapping actionId="MoveTestCaseDownAction" keyStroke="menu DOWN"/>
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="ExportTestCase"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="TestSteps Node Actions" id="TestStepsTreeNodeActions" default="ShowDesktopPanelAction">
         <tns:actionMapping actionId="ShowDesktopPanelAction" name="Show TestCase Editor"
                            description="Shows the TestCase Editor for this TestCase" keyStroke="ENTER"/>
         <tns:actionMapping groupId="WsdlTestCaseAddStepActions" name="Add Step"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="LoadSteps Node Actions" id="LoadTestsTreeNodeActions">
         <tns:actionMapping actionId="AddNewLoadTestAction" keyStroke="menu N"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="SecuritySteps Node Actions" id="SecurityTestsTreeNodeActions">
         <tns:actionMapping actionId="AddNewSecurityTestAction" keyStroke="menu S"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlTestStep ActionGroup -->
@@ -686,76 +652,52 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="ChangeOperationAction"/>
         <tns:actionMapping actionId="SelectOperationAction"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="HTTP RequestStep Actions" id="HttpTestRequestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="REST RequestStep Actions" id="RestTestRequestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="Manual TestStep Actions" id="ManualTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="PropertyTransfer Actions" id="PropertyTransfersTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="DelayStep Actions" id="WsdlDelayTestStepActions" default="SetWaitTimeAction"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="SetWaitTimeAction"/>
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="GroovyScript Actions" id="WsdlGroovyScriptTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="JdbcRequest Actions" id="JdbcRequestTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="AMFRequest Actions" id="AMFRequestTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="GotoStep Actions" id="WsdlGotoTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="PropertiesStep Actions" id="WsdlPropertiesTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="RunTestCaseStep Actions" id="WsdlRunTestCaseTestStepActions"
                      class="com.eviware.soapui.impl.wsdl.actions.teststep.WsdlTestStepSoapUIActionGroup">
-
-
     </tns:actionGroup>
 
     <tns:actionGroup name="WsdlMockResponseTestStep Actions" id="WsdlMockResponseTestStepActions"
@@ -763,8 +705,6 @@
                      default="ConfigureDataSourceLoopStepAction">
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="SetMockOperationAction"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlMessageAssertions -->
@@ -775,7 +715,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="RenameAssertionAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteAssertionAction" keyStroke="DELETE"/>
-
     </tns:actionGroup>
 
     <!-- WsdlLoadTest ActionGroup -->
@@ -790,8 +729,6 @@
         <tns:actionMapping actionId="CloneLoadTestAction" keyStroke="F9"/>
         <tns:actionMapping actionId="RenameLoadTestAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteLoadTestAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- SecurityTest ActionGroup -->
@@ -805,8 +742,6 @@
         <tns:actionMapping actionId="CloneSecurityTestAction" keyStroke="F9"/>
         <tns:actionMapping actionId="RenameSecurityTestAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteSecurityTestAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlMockService ActionGroup -->
@@ -828,8 +763,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="ExportMockService"/>
         <tns:actionMapping actionId="ImportMockOperation"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlMockOperation ActionGroup -->
@@ -846,8 +779,6 @@
         <tns:actionMapping actionId="DeleteMockOperationAction" keyStroke="DELETE"/>
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="ExportMockOperation"/>
-
-
     </tns:actionGroup>
 
     <!-- WsdlMockResponse ActionGroup -->
@@ -862,8 +793,6 @@
         <tns:actionMapping actionId="CloneMockResponseAction" keyStroke="F9"/>
         <tns:actionMapping actionId="RenameMockResponseAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteMockResponseAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestMockService ActionGroup -->
@@ -879,8 +808,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="RenameMockResponseAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteMockServiceAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestMockAction ActionGroup -->
@@ -892,8 +819,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="RenameMockOperationAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteMockOperationAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- RestMockResponse ActionGroup -->
@@ -903,8 +828,6 @@
         <tns:actionMapping actionId="SeperatorAction"/>
         <tns:actionMapping actionId="RenameMockResponseAction" keyStroke="F2"/>
         <tns:actionMapping actionId="DeleteMockResponseAction" keyStroke="DELETE"/>
-
-
     </tns:actionGroup>
 
     <!-- MultiActions Group -->
@@ -917,5 +840,4 @@
         <!-- <tns:actionMapping actionId="MultiAssertionEnableAction" /> <tns:actionMapping
             actionId="MultiAssertionDisableAction" /> -->
     </tns:actionGroup>
-
 </tns:soapui-actions>

@@ -37,8 +37,6 @@ import java.util.Set;
 
 /**
  * The Navigator TreeModel
- *
- * @author Ole.Matzura
  */
 
 public class SoapUITreeModel implements TreeModel {

@@ -23,10 +23,7 @@ import com.eviware.soapui.support.action.SoapUIActionMapping;
 
 /**
  * Default implementation for a SoapUIActionMapping
- *
- * @author ole.matzura
  */
-
 public class DefaultActionMapping<T extends ModelItem> implements SoapUIActionMapping<T> {
     private String actionId;
     private String keyStroke;

@@ -39,10 +39,7 @@ import java.util.Map;
 
 /**
  * Global SoapUIAction Registry
- *
- * @author ole.matzura
  */
-
 @SuppressWarnings("unchecked")
 public class SoapUIActionRegistry {
     private Map<String, SoapUIAction> actions = new HashMap<String, SoapUIAction>();
@@ -101,6 +98,7 @@ public class SoapUIActionRegistry {
             return actionGroup;
         }
 
+        @Override
         public void perform(T target, Object param) {
             SoapUIActionGroup group = getActionGroup();
             List<SoapUIActionMapping<T>> mappings = group.getActionMappings(target);

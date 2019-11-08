@@ -41,10 +41,7 @@ import java.util.Vector;
 
 /**
  * Abstract base class for SoapUITreeNode implementations
- *
- * @author Ole.Matzura
  */
-
 public abstract class AbstractModelItemTreeNode<T extends ModelItem> implements SoapUITreeNode, PropertyChangeListener {
     private final T modelItem;
     private final ModelItem parentItem;

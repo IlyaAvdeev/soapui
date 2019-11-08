@@ -24,10 +24,7 @@ import java.beans.PropertyChangeSupport;
 
 /**
  * Abstract SoapUIAction for extension
- *
- * @author ole.matzura
  */
-
 public abstract class AbstractSoapUIAction<T extends ModelItem> implements SoapUIAction<T> {
     private PropertyChangeSupport propertySupport;
     private String name;
