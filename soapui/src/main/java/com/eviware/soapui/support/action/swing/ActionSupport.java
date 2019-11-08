@@ -123,6 +123,7 @@ public class ActionSupport {
             return actionList;
         }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             Action defaultAction = actionList.getDefaultAction();
             if (defaultAction != null) {
@@ -130,8 +131,6 @@ public class ActionSupport {
             }
         }
     }
-
-    ;
 
     public static JPopupMenu insertActions(ActionList actions, JPopupMenu popup, int index) {
         for (int i = 0; i < actions.getActionCount(); i++) {
