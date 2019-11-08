@@ -30,16 +30,8 @@ import com.eviware.soapui.support.action.swing.ActionSupport;
 import com.eviware.soapui.support.components.JXToolBar;
 import com.eviware.soapui.support.swing.MenuBuilderHelper;
 
-import javax.swing.AbstractAction;
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JToggleButton;
-import javax.swing.JTree;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.ToolTipManager;
+import javax.annotation.Nonnull;
+import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.event.TreeSelectionEvent;
@@ -47,22 +39,11 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.dnd.Autoscroll;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
+import java.awt.event.*;
 import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The SoapUI navigator tree
@@ -407,9 +388,16 @@ public class Navigator extends JPanel {
             pm.show(mainTree, x, y);
         }
 
+        private void addBulkExpandCollapseActions(@Nonnull JPopupMenu originalMenu, int row) {
+            originalMenu.add(new JPopupMenu.Separator());
+            originalMenu.add("Collapse All").addActionListener(new CollapseRowAction(row));
+            originalMenu.add("Expand All").addActionListener(new ExpandRowAction(row));
+        }
+
         private void showPopup(MouseEvent e) {
-            if (mainTree.getSelectionCount() < 2) {
-                TreePath path = mainTree.getPathForLocation((int) e.getPoint().getX(), (int) e.getPoint().getY());
+            if (mainTree.getSelectionCount() < 2) {//just one node is selected
+                TreePath path = mainTree.getPathForLocation((int) e.getPoint().getX(),
+                        (int) e.getPoint().getY());
                 if (path == null) {
                     int row = (int) e.getPoint().getY() / mainTree.getRowHeight();
                     if (row != -1) {
@@ -429,9 +417,12 @@ public class Navigator extends JPanel {
                 }
 
                 mainTree.setSelectionPath(path);
+                if (node.isLeaf() == false) {
+                    addBulkExpandCollapseActions(popupMenu, mainTree.getRowForPath(path));
+                }
 
                 showToolTipLessPopupMenu(popupMenu, e.getX(), e.getY());
-            } else {
+            } else { // more than 1 node is selected
                 TreePath[] selectionPaths = mainTree.getSelectionPaths();
                 List<ModelItem> targets = new ArrayList<ModelItem>();
                 for (TreePath treePath : selectionPaths) {
