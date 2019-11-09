@@ -13,6 +13,7 @@ By downloading our software, you agree to our [license](https://www.soapui.org/d
 * No Endpoint Explorer. 
 * Main window UI cleanup.
 * Expandable Navigator nodes have got Expand All/Collapse All actions.
+* No requirements for plugins to be signed.
 
 ## Table of content
 
