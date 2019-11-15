@@ -23,8 +23,6 @@ import java.util.Map;
 
 /**
  * Registry of available desktops
- *
- * @author ole.matzura
  */
 
 public class DesktopRegistry {

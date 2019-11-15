@@ -69,8 +69,6 @@ import java.util.Map;
 
 /**
  * The default standalone SoapUI desktop using a JDesktopPane
- *
- * @author Ole.Matzura
  */
 
 public class StandaloneDesktop extends AbstractSoapUIDesktop {
