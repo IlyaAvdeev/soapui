@@ -23,29 +23,29 @@ import java.util.List;
 import java.util.Map;
 
 public interface TestPropertyHolder {
-    public String[] getPropertyNames();
+    String[] getPropertyNames();
 
-    public void setPropertyValue(String name, String value);
+    void setPropertyValue(String name, String value);
 
-    public String getPropertyValue(String name);
+    String getPropertyValue(String name);
 
-    public TestProperty getProperty(String name);
+    TestProperty getProperty(String name);
 
-    public Map<String, TestProperty> getProperties();
+    Map<String, TestProperty> getProperties();
 
-    public void addTestPropertyListener(TestPropertyListener listener);
+    void addTestPropertyListener(TestPropertyListener listener);
 
-    public void removeTestPropertyListener(TestPropertyListener listener);
+    void removeTestPropertyListener(TestPropertyListener listener);
 
-    public boolean hasProperty(String name);
+    boolean hasProperty(String name);
 
-    public ModelItem getModelItem();
+    ModelItem getModelItem();
 
-    public int getPropertyCount();
+    int getPropertyCount();
 
-    public List<TestProperty> getPropertyList();
+    List<TestProperty> getPropertyList();
 
-    public TestProperty getPropertyAt(int index);
+    TestProperty getPropertyAt(int index);
 
-    public String getPropertiesLabel();
+    String getPropertiesLabel();
 }
