@@ -25,30 +25,26 @@ import java.util.List;
 
 /**
  * General behaviour for all soapui model items
- *
- * @author Ole.Matzura
  */
-
 public interface ModelItem extends PropertyChangeNotifier {
-    public final static String NAME_PROPERTY = ModelItem.class.getName() + "@name";
-    public final static String ICON_PROPERTY = ModelItem.class.getName() + "@icon";
-    public final static String DESCRIPTION_PROPERTY = ModelItem.class.getName() + "@description";
-    public final static String LABEL_PROPERTY = ModelItem.class.getName() + "@label";
+    String NAME_PROPERTY = ModelItem.class.getName() + "@name";
+    String ICON_PROPERTY = ModelItem.class.getName() + "@icon";
+    String DESCRIPTION_PROPERTY = ModelItem.class.getName() + "@description";
+    String LABEL_PROPERTY = ModelItem.class.getName() + "@label";
 
-    public String getName();
+    String getName();
 
-    public String getId();
+    String getId();
 
-    public ImageIcon getIcon();
+    ImageIcon getIcon();
 
-    public String getDescription();
+    String getDescription();
 
-    public Settings getSettings();
+    Settings getSettings();
 
+    List<? extends ModelItem> getChildren();
 
-    public List<? extends ModelItem> getChildren();
-
-    public ModelItem getParent();
+    ModelItem getParent();
 
     /**
      * Gets the project that this ModelItem object is part of. If this model item is not part of a project,
@@ -57,5 +53,5 @@ public interface ModelItem extends PropertyChangeNotifier {
      * @return The Project object that this ModelItem is a descendant of
      * @throws UnsupportedOperationException If this model item is not the descendant of a project
      */
-    public Project getProject();
+    Project getProject();
 }
