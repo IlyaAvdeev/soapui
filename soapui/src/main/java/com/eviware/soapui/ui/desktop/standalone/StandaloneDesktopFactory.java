@@ -23,7 +23,6 @@ import com.eviware.soapui.ui.desktop.SoapUIDesktop;
 /**
  * Creates a StandaloneDesktop
  */
-
 public class StandaloneDesktopFactory implements DesktopFactory {
     public SoapUIDesktop createDesktop(Workspace workspace) {
         return new StandaloneDesktop(workspace);

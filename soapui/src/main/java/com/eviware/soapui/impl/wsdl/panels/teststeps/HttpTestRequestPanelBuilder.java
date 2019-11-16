@@ -28,10 +28,7 @@ import javax.swing.JPanel;
 
 /**
  * PanelBuilder for HttpTestRequest
- *
- * @author Ole.Matzura
  */
-
 public class HttpTestRequestPanelBuilder extends EmptyPanelBuilder<HttpTestRequestStep> {
     public HttpTestRequestPanelBuilder() {
     }

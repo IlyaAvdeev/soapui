@@ -70,7 +70,6 @@ import java.util.Map;
 /**
  * The default standalone SoapUI desktop using a JDesktopPane
  */
-
 public class StandaloneDesktop extends AbstractSoapUIDesktop {
     private JDesktopPane desktop;
     private Map<ModelItem, JInternalFrame> modelItemToInternalFrameMap = new HashMap<ModelItem, JInternalFrame>();

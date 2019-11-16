@@ -24,7 +24,6 @@ import javax.swing.JComponent;
 /**
  * Behaviour for a SoapUI Desktop implementation
  */
-
 public interface SoapUIDesktop {
     boolean closeDesktopPanel(DesktopPanel desktopPanel);
 
