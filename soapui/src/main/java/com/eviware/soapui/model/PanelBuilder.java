@@ -21,17 +21,29 @@ import com.eviware.soapui.ui.desktop.DesktopPanel;
 import java.awt.Component;
 
 /**
- * Behaviour for building ModelItem-related UI panels
- *
- * @author Ole.Matzura
+ * Behaviour for building {@link ModelItem}-related UI panels
+ * @see com.eviware.soapui.model.ModelItem
  */
-
 public interface PanelBuilder<T extends ModelItem> {
-    public boolean hasOverviewPanel();
+    /**
+     * Gets the existence of overview panel
+     * (if there should be Properties & Custom Properties in the bottom left corner of SoapUI window)
+     * NOTE: this method is not about "has panel been built or not". It' about if the panel
+     * been instrumented/created.
+     * @return true of false
+     */
+    boolean hasOverviewPanel();
 
-    public Component buildOverviewPanel(T modelItem);
+    Component buildOverviewPanel(T modelItem);
 
-    public boolean hasDesktopPanel();
+    /**
+     * Gets the existence of main UI window associated with the ModelItem
+     * (typically it's true since there is sense to have a ModelItem and do not have a UI to configure it)
+     * NOTE: this method is not about "has panel been built or not". It' about if the panel
+     * been instrumented/created.
+     * @return
+     */
+    boolean hasDesktopPanel();
 
-    public DesktopPanel buildDesktopPanel(T modelItem);
+    DesktopPanel buildDesktopPanel(T modelItem);
 }
