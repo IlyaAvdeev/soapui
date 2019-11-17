@@ -84,7 +84,6 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
     private CloseOtherAction closeOtherAction = new CloseOtherAction();
     private CloseAllAction closeAllAction = new CloseAllAction();
 
-    private static final int xOffset = 30, yOffset = 30;
     private boolean transferring;
 
     private List<DesktopPanel> deferredDesktopPanels = new LinkedList<DesktopPanel>();
@@ -231,9 +230,9 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
         JInternalFrame frame = new JInternalFrame(title, true, true, true, true);
         frame.addInternalFrameListener(internalFrameListener);
         frame.setContentPane(panel);
-        frame.setLocation(xOffset * (desktop.getComponentCount() % 10), yOffset * (desktop.getComponentCount() % 10));
-        Point location = frame.getLocation();
-        Dimension frameSize = calculateDesktopPanelSize(panel, location);
+        Point location = new Point(0,0);
+        frame.setLocation(location);
+        Dimension frameSize = calculateDesktopPanelSize(panel, location, 1.0);
         frame.setSize(frameSize);
         frame.setVisible(true);
         frame.setFrameIcon(desktopPanel.getIcon());
@@ -249,14 +248,14 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
         return frame;
     }
 
-    private Dimension calculateDesktopPanelSize(JComponent panel, Point location) {
+    private Dimension calculateDesktopPanelSize(JComponent panel, Point location, double decreaseFactor) {
         Dimension frameSize;
         Dimension preferredSize = panel.getPreferredSize();
         if (desktop.getBounds().contains(new Rectangle(location, preferredSize))) {
             frameSize = preferredSize;
         } else {
-            frameSize = new Dimension((int) ((desktop.getWidth() - location.x) * .95),
-                    (int) ((desktop.getHeight() - location.y) * .95));
+            frameSize = new Dimension((int) ((desktop.getWidth() - location.x) * decreaseFactor),
+                    (int) ((desktop.getHeight() - location.y) * decreaseFactor));
         }
         return frameSize;
     }
