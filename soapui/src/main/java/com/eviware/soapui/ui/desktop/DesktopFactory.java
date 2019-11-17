@@ -19,9 +19,8 @@ package com.eviware.soapui.ui.desktop;
 import com.eviware.soapui.model.workspace.Workspace;
 
 /**
- * Factory for a specific SoapUIDesktop implementation
+ * Factory for a specific {@link SoapUIDesktop} implementation
  */
-
 public interface DesktopFactory {
     SoapUIDesktop createDesktop(Workspace workspace);
 }

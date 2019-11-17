@@ -154,7 +154,7 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
                     return frame.isClosed();
                 }
                 // else
-                // throw new RuntimeException( "Cannot close unkown DesktopPanel: "
+                // throw new RuntimeException( "Cannot close unknown DesktopPanel: "
                 // + desktopPanel.getTitle() );
 
                 return false;
