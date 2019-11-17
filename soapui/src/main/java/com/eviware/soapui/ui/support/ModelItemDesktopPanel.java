@@ -35,11 +35,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 /**
- * Base class for DesktopPanels..
+ * Base class for DesktopPanels.
  */
 
-public abstract class ModelItemDesktopPanel<T extends ModelItem> extends JPanel implements DesktopPanel,
-        PropertyChangeListener {
+public abstract class ModelItemDesktopPanel<T extends ModelItem> extends JPanel
+        implements DesktopPanel, PropertyChangeListener {
     private final T modelItem;
 
     public ModelItemDesktopPanel(T modelItem) {

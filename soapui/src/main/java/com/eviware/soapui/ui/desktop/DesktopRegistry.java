@@ -23,10 +23,7 @@ import java.util.Map;
 
 /**
  * Registry of available desktops
- *
- * @author ole.matzura
  */
-
 public class DesktopRegistry {
     private static DesktopRegistry instance;
     private Map<String, DesktopFactory> factories = new HashMap<String, DesktopFactory>();

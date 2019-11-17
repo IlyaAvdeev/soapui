@@ -23,10 +23,7 @@ import javax.swing.JComponent;
 
 /**
  * null-desktop used when running from command-line, etc
- *
- * @author Ole
  */
-
 public class NullDesktop implements SoapUIDesktop {
     public void addDesktopListener(DesktopListener listener) {
     }

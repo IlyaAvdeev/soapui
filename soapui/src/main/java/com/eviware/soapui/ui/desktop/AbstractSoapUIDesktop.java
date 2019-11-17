@@ -43,10 +43,7 @@ import java.util.Set;
 
 /**
  * Abstract SoapUIDesktop implementation for extension
- *
- * @author ole.matzura
  */
-
 public abstract class AbstractSoapUIDesktop implements SoapUIDesktop {
     private final Workspace workspace;
     private final InternalProjectListener projectListener = new InternalProjectListener();
@@ -213,6 +210,7 @@ public abstract class AbstractSoapUIDesktop implements SoapUIDesktop {
         }
     }
 
+    @Override
     public void release() {
         for (int c = 0; c < workspace.getProjectCount(); c++) {
             Project project = workspace.getProjectAt(c);

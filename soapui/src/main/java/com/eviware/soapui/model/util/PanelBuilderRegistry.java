@@ -90,10 +90,7 @@ import java.util.Map;
 
 /**
  * Registry of PanelBuilders
- *
- * @author ole.matzura
  */
-
 public class PanelBuilderRegistry {
     private static Map<Class<? extends ModelItem>, PanelBuilder<? extends ModelItem>> builders = new HashMap<Class<? extends ModelItem>, PanelBuilder<? extends ModelItem>>();
 
