@@ -119,7 +119,7 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
     }
 
     private void buildUI() {
-        desktop = new SoapUIDesktopPane();
+        desktop = new JDesktopPane();
         JScrollPane scrollPane = new JScrollPane(desktop);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         inspector = JInspectorPanelFactory.build(scrollPane, SwingConstants.RIGHT);
@@ -423,41 +423,6 @@ public class StandaloneDesktop extends AbstractSoapUIDesktop {
         enableWindowActions();
 
         return desktopPanel;
-    }
-
-    class SoapUIDesktopPane extends JDesktopPane {
-        Image img;
-        private int imageWidth;
-        private int imageHeight;
-
-        public SoapUIDesktopPane() {
-            try {
-                File file = new File("soapui-background.gif");
-                if (!file.exists())
-                    file = new File("soapui-background.jpg");
-                if (!file.exists())
-                    file = new File("/soapui-background.png");
-
-                if (file.exists()) {
-                    img = javax.imageio.ImageIO.read(file);
-                    imageWidth = img.getWidth(this);
-                    imageHeight = img.getHeight(this);
-                }
-            } catch (Exception e) {
-                SoapUI.logError(e, "Could not load graphics for desktop");
-            }
-        }
-
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            if (img == null)
-                return;
-
-            int x = (this.getWidth() - imageWidth) / 2;
-            int y = (this.getHeight() - imageHeight) / 2;
-
-            g.drawImage(img, x, y, imageWidth, imageHeight, this);
-        }
     }
 
     public void transferTo(SoapUIDesktop newDesktop) {
