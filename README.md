@@ -15,6 +15,7 @@ By downloading our software, you agree to our [license](https://www.soapui.org/d
 * Expandable Navigator nodes have got Expand All/Collapse All actions.
 * No requirements for plugins to be signed.
 * Newly added desktop panels attempt to get all available desktop area.
+* Added GraphQL Request test step.
 
 ### Prerequisites
 
