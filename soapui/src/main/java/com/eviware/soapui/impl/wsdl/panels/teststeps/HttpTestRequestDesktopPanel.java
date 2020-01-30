@@ -213,9 +213,7 @@ public class HttpTestRequestDesktopPanel extends
 
     protected void addToolbarComponents(@Nonnull JPanel toolbar) {
         addMethodCombo(toolbar);
-
         toolbar.add(createPathPanel(), "growx");
-
         addCheckBox(toolbar);
     }
 
